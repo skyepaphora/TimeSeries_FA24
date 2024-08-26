@@ -12,4 +12,4 @@ unlike the printable pdfs in <span style="color:blue">
 
 | Week   | Monday    | Wednesday | Friday    |
 |:-------|:----------|:----------|:----------|
-| Week 1 | (summer)  | [What is a Time Series?] (https://docs.google.com/presentation/d/1g-OGQTh_g2aNg0lSEX-dvQVbnzPqPLODM2g6LH18bW4/edit?usp=sharing) | | 
+| Week 1 | (summer)  | [What is a Time Series?](https://docs.google.com/presentation/d/1g-OGQTh_g2aNg0lSEX-dvQVbnzPqPLODM2g6LH18bW4/edit?usp=sharing) | | 
