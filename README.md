@@ -6,10 +6,9 @@
 ### Google Slide Presentations
 
 The following links provide access to the course's full slideshows - 
-unlike the printable pdfs in <span style="color:blue">
-[this folder](https://github.com/skyepaphora)
-</span>
+unlike the printable pdfs in [this folder,](https://github.com/skyepaphora) 
+the slideshows include gifs and videos.
 
 | Week   | Monday    | Wednesday | Friday    |
 |:-------|:----------|:----------|:----------|
-| Week 1 | (summer)  | [What is a Time Series?](https://docs.google.com/presentation/d/1g-OGQTh_g2aNg0lSEX-dvQVbnzPqPLODM2g6LH18bW4/edit?usp=sharing) | | 
+| Week 1 | (summer)  | [What is a Time Series?](https://docs.google.com/presentation/d/1g-OGQTh_g2aNg0lSEX-dvQVbnzPqPLODM2g6LH18bW4/edit?usp=sharing) | [Eliminating Trends](https://docs.google.com/presentation/d/1FGfncxANPGrMabziSMltRtQReDQqf7V8f-vRPyC1R4M/edit?usp=sharing) | 
