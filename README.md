@@ -12,3 +12,5 @@ the slideshows include gifs and videos.
 | Week   | Monday    | Wednesday | Friday    |
 |:-------|:----------|:----------|:----------|
 | Week 1 | (summer)  | [What is a Time Series?](https://docs.google.com/presentation/d/1g-OGQTh_g2aNg0lSEX-dvQVbnzPqPLODM2g6LH18bW4/edit?usp=sharing) | [Eliminating Trends](https://docs.google.com/presentation/d/1FGfncxANPGrMabziSMltRtQReDQqf7V8f-vRPyC1R4M/edit?usp=sharing) | 
+
+[Hello](https://queensu.zoom.us/j/96911322412?pwd=4W4yYyaZKcd4lPf6R6ReaaQD4NJbhQ.1)
