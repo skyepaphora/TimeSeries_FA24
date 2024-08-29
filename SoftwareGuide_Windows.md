@@ -3,7 +3,7 @@
 
 ---
 
-### Installing Rstudio
+## Installing Rstudio
 
 If you don't have any of these, install them. They must be installed in order. If you *do* have these, take this opportunity to update to the latest version.
 
@@ -31,7 +31,7 @@ R and RStudio work great at doing a wide variety of things, but there are more a
 Finally, go to File and choose New Quarto Document, set the author and title, and click the PDF option.\
 Save it somewhere sensible - I recommend you make a designated 464 folder and put it on your desktop.
 
-Then, click the Render button.
+Then, click the **Render** button.
 
 If you've done everything right, it'll start rendering, and then say it needs to set up some "TeX" stuff.
 \
