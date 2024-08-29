@@ -27,6 +27,14 @@ R and RStudio work great at doing a wide variety of things, but there are more a
 <!--- 4. Back in the Console, copy-paste: devtools::install_github("rstudio/gradethis") --->
 5. Back in the Console, copy-paste and run: `tinytex::install_tinytex()`
 
+#### Issue 24
+If you are on a Mac, an error pops up: famous "issue 24". Take a moment, go: **Launchpad** $\to$ **Terminal,** and fix it by copy/pasting these two commands:
+
+`sudo chown -R `whoami`:admin /usr/local/bin` $\qquad$ CAREFUL: those are not ' ticks, they are ` ticks - the same key as the $\sim$ symbol.\
+`~/Library/TinyTeX/bin/*/tlmgr path add`
+
+You should copy-paste these, as they have highly specific syntax. The first one will pop up a password request - see the video on OnQ for a demonstration of how to do it. If you run those two lines, then the error is fixed, and you can move on.
+
 ## Setting up Quarto
 Finally, go to File and choose New Quarto Document, set the author and title, and click the PDF option.\
 Save it somewhere sensible - I recommend you make a designated 464 folder and put it on your desktop.
@@ -36,3 +44,5 @@ Then, click the **Render** button.
 If you've done everything right, it'll start rendering, and then say it needs to set up some "TeX" stuff.
 \
 Let it run - it can take a few minutes the first time, to get it all set up. If a PDF file pops up, you're done.
+
+**NOTE if you're on a Mac M1:** if you get a pop-up with a Error State not recoverable, you need to install one more thing - called rosetta - to get things working.
