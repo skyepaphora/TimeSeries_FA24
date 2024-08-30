@@ -30,4 +30,4 @@ You may need help installing the computing software required for this course. He
 >[Guide for Windows](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/SoftwareGuide_Windows.md)\
 >[Guide for Mac](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/SoftwareGuide_Mac.md)
 
-These guides were mostly written by some of my profs/colleagues at Trent University. *They also made videos!* These videos are available on OnQ, HERE. You may find these particularly helpful if you have a Mac.
+These guides were mostly written by some of my profs/colleagues at Trent University. *They also made videos!* I have posted these on OnQ, here. You may find these videos particularly helpful if you have a Mac.
