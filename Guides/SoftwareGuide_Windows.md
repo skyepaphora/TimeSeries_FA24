@@ -24,7 +24,6 @@ R and RStudio work great at doing a wide variety of things, but there are more a
 2. Copy and paste the following code into the console:\
 `install.packages(c("knitr", "tinytex", "tidyverse", "quarto", "devtools", "itsmr"))`
 3. Let it run. Note any errors at the end. Red text is perfectly normal. What you are looking for is something like a series of lines saying `DONE (package_name)`, like `DONE (ggplot2)` and `DONE (quarto).`
-<!--- 4. Back in the Console, copy-paste: devtools::install_github("rstudio/gradethis") --->
 5. Back in the Console, copy-paste and run: `tinytex::install_tinytex()`
 
 ## Setting up Quarto
