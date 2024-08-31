@@ -3,14 +3,6 @@
 
 ---
 
-### Office Hours
-
-[Join Zoom Meeting](https://queensu.zoom.us/j/99785159202?pwd=7Muvwaq43S7NlczdQyRnESbiLzpVF9.1)
-
-Meeting ID: 997 8515 9202
-Passcode: [(View on OnQ)](https://onq.queensu.ca/d2l/home/948691)
-
----
 
 ### Google Slide Presentations
 
