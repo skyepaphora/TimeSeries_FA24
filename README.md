@@ -4,7 +4,7 @@
 ---
 
 
-## Google Slide Presentations
+## Google Slides Presentations
 
 The following links provide access to the course's full slideshows - 
 unlike the printable pdfs the [printable slides](https://github.com/skyepaphora/TimeSeries_FA24/tree/main/Printable_Slides) folder, these slideshows **include gifs and videos.**
@@ -19,7 +19,7 @@ unlike the printable pdfs the [printable slides](https://github.com/skyepaphora/
 
 You may need help installing the computing software required for this course. Here are a couple of guides.
 
->[Guide for Windows](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/SoftwareGuide_Windows.md)\
->[Guide for Mac](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/SoftwareGuide_Mac.md)
+>[Guide for Windows](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/Guides/SoftwareGuide_Windows.md)\
+>[Guide for Mac](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/Guides/SoftwareGuide_Mac.md)
 
 These guides were mostly written by some of my profs/colleagues at Trent University. *They also made videos!* I have posted these on OnQ, here. You may find these videos particularly helpful if you have a Mac.
