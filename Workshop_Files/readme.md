@@ -9,10 +9,9 @@
     - required packages (see below)
 2. Be sure to bring your laptop to class, with the above programs installed.
 
-For further info, please review the software guide documents on my github.
-
 Code to install required packages: \
-`install.packages(c("knitr", "tinytex", "tidyverse", "quarto", "devtools", "itsmr"))`
+`install.packages(c("knitr", "tinytex", "tidyverse", "quarto", "devtools", "itsmr"))` \
+For further info, please review the software guide documents on my github.
 
 ## Workshop Agenda
 
