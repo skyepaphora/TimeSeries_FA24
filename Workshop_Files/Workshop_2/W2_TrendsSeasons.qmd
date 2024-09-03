@@ -1,6 +1,0 @@
-First, we should load some packages. Normally we would do this right at the beginning of the document.
-
-```{r}
-library(itsmr) # package from the textbook
-library(readr) # reliable package for reading csv files
-```
