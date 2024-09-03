@@ -7,13 +7,12 @@
     - RStudio
     - Rtools (windows) **or** xcode command line tools (mac)
     - required packages (see below)
+2. Be sure to bring your laptop to class, with the above programs installed.
 
 For further info, please review the software guide documents on my github.
 
-Code to install required packages: `install.packages(c("knitr", "tinytex", "tidyverse", "quarto", "devtools", "itsmr"))`
-
-2. Be sure to bring your laptop to class, with the above programs installed.
-
+Code to install required packages: \
+`install.packages(c("knitr", "tinytex", "tidyverse", "quarto", "devtools", "itsmr"))`
 
 ## Workshop Agenda
 
