@@ -1,4 +1,4 @@
-# Workshop 1
+# Workshop 1: September 9th
 
 ## Before you come to Workshop
 
