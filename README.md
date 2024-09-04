@@ -15,7 +15,7 @@ unlike the printable pdfs the [printable slides](https://github.com/skyepaphora/
 
 ---
 
-Oh no, a typo?
+Oh no, a typo!
 
 
 
