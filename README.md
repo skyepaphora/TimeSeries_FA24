@@ -17,6 +17,21 @@ unlike the printable pdfs the [printable slides](https://github.com/skyepaphora/
 
 Oh no, a typo!
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ## Software Guides
 
 **Warning: some information in these guides may be out of date. Expect updates over the next week or so.**
