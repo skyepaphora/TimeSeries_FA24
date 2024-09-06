@@ -32,7 +32,7 @@ $\quad$ (The webpage shown in the video has been reproduced, below.)
 
 ### Step 4 - Install TinyTex
 1. Open RStudio;
-2. Go to the "**Terminal**" tab, located in the top right pane by default.
+2. Go to the "**Terminal**" tab, located in the ~top right pane~ *(uhh, bottom left pane, on mine, not sure what Dave's talking about)* by default.
 3. Type in the command:\
 `quarto uninstall tinytex`\
 and press enter. You will be asked if you are sure, type "Y" and press enter. You may be given a warning or message that you do not have TinyTex installed; no problem
