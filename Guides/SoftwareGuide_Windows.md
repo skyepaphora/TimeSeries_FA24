@@ -5,8 +5,8 @@ These instructions were put together by some colleagues of mine at Trent Univers
 
 **NOTE:** One thing this version of the tutorial doesn't include is the installation of *Rtools.* This is is highly recommended but not strictly necessary. To download it, go to the R website, [here](https://cran.r-project.org/). Then click: **Download R for Windows** $\to$ **Rtools** $\to$ **RTools 4.4** $\to$ **Rtools44 installer.** Run it.
 
-## Video Tutorial
-[**Watch Here**](https://trentu.yuja.com/V/Video?v=1070960&a=208375806) 
+## Video Tutorial!
+[**Watch Here!**](https://trentu.yuja.com/V/Video?v=1070960&a=208375806) 
 $\quad$ (The webpage shown in the video has been reproduced, below.)
 
 ---
