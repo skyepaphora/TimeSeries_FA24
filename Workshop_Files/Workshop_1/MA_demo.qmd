@@ -128,13 +128,16 @@ lines(10:15, my.MA,
 
 ```
 
-## My questions for you
+## Questions for you to think about
 
 Does this look right? 
 
 Why do you think $\hat m_t$ has this shape, in this region? 
 
-Are the results "successful?" What would that mean?
+Was the smoother "effective?" What would that mean?
+
+Consider how you would write a function to smooth an entire time series, 
+similarly to the `smoo.ma()` function. (You might want to use loops, vector arithmetic, or `apply()` functions)
 
 
 
