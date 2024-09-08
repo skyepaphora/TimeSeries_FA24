@@ -7,7 +7,7 @@ These instructions were put together by some colleagues of mine at Trent Univers
 **NOTE:** One thing this version of the tutorial doesn't include is the installation of *Xcode Command Line Tools.* This is is highly recommended but not strictly necessary.
 The simplest way to install this set of tools is to use the terminal: 
 
-`Launcher -> Terminal ->` type `xcode-select --install` \ and confirm the details.
+`Launcher -> Terminal ->` type `xcode-select --install` and confirm the details.
 
 ## Video Tutorial!
 [**Watch Here!**](https://trentu.yuja.com/V/Video?v=1070951&node=5696126&a=177983973) 
@@ -24,7 +24,7 @@ $\quad$ (The webpage shown in the video has been reproduced, below.)
 3.  Determine whether you have an M1/M2 mac, or an Intel Mac (see [here](https://docs.cse.lehigh.edu/determine-mac-architecture/) to find out how)
 
     a)  **If you have an M1/M2 mac,** download: **R-4.4.1-arm64.pkg**\
-        The version number may be different the important part is the "arm64" part of the filename.
+        The version number may be different the important part is the "arm64" part of the filename. \
     b)  **If you have an Intel mac,** download: **R-4.4.1-x86_64.pkg**\
         The version number may be different; the important part is the "x86_64" part of the filename.
 
