@@ -4,7 +4,7 @@ subtitle: "Australian Wine Edition <3"
 format: pdf
 ---
 
-In workshop, we will cover the actual high-level ITSMR functions used to implement this kind of smoother. 
+In future workshops, we will use the actual high-level ITSMR functions used to implement this kind of smoother.
 However, these functions are *black boxes* in the sense that without diving into further documentation, it's not clear what they are doing *mathematically.* We'll recreate what's inside the black box now.
 
 #### Agenda
