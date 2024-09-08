@@ -123,7 +123,7 @@ plot(wine.data[5:20,],
      ylim = range(x[5:20],my.MA),           # Makes it all fit in plot window
      main = "Australian Red Wine Sales")   
 mtext("Plus ITSMR's MA smoother (q = 5)")   # Adds a subtitle
-lines(10:15, my.MA,
+lines(10:15, check,
       col = "blue", type = "o", pch = 20)   # Adds ITSMR function's output
 
 ```
