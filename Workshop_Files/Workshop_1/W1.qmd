@@ -83,10 +83,10 @@ And here we can plot the data:
 
 We'll go over some of these if we get a chance to. If not, I recommend you read this section on your own time.
 
-#### Inline code
-Recall that we generated the variable `x` randomly. We can display those values inline by creating a mini-chunk, which is also capable of dynamic output.
+#### In-line code
+Recall that we generated the variable `x` randomly. We can display those values in-line by creating a mini-chunk, which is also capable of dynamic output.
 
-> *The 5th observation in the vector * `x` is `r x[5]`
+> *The 5th observation in the vector * `x` is [ANSWER]
 
 #### Knitting errors
 
@@ -96,7 +96,7 @@ Recall that we generated the variable `x` randomly. We can display those values 
 * *Read* the \textcolor{red}{error text}: what *line* does Quarto say the error is located? What *chunk?*
 
 #### Formatting errors
-To make sure your markdown syntax doesn't bug out, leave one line of **vertical space** between:
+If your markdown syntax is bugging out, try leaving one line of **vertical space** between:
 
 * Headers
 * Chunks
@@ -105,6 +105,9 @@ To make sure your markdown syntax doesn't bug out, leave one line of **vertical 
 * Lists (like this one) but not list *items*
 
 #### Creating a Table
+
+This might be handy for displaying output like model coefficients and p-values in your final report.
+It's compatible with in-line code, too.
 
 | A  | B    | C    | D    | E  | F  |
 |:---|:-----|:----:|-----:|:---|:---|
