@@ -1,7 +1,9 @@
 ---
 title: "Workshop 1: Welcome!"
-subtitle: "STAT 464/864 Discrete Time Series Analysis"
-author: "Skye P. Griffith, Queen's University"
+subtitle: |
+    | STAT 464/864 - Fall 2024  
+    | Discrete Time Series Analysis
+    | Skye P. Griffith, Queen's University
 format: pdf
 ---
 
@@ -17,7 +19,7 @@ Italic font
 
 Bold font
 
-Use 1 to 4 hashtags to make a **header.** More hashtags = *smaller* header! You'll need to use headers to organize your assignments and reports for this class.\
+Use 1 to 4 hashtags to make a **header.** More hashtags = *smaller* header! You'll need to use headers to organize your assignments and reports for this class.
 
 **Example: 1**  Say problem 1 has parts a), b) and c)
 
@@ -51,6 +53,12 @@ You can set your working directory by clicking the gear in the RStudio "files" p
 
 [ANSWER]
 
+In the *console,* not your .qmd file. It will break your render if you try to run it in Quarto. This is just good practice for your RStudio session.
+
+#### Your QUARTO working directory
+
+When you render, Quarto will take the working directory to be whatever folder your active .qmd file is saved to. So: **if you can't load stuff like images and data** when you *render,* then you probably need to **move your active .qmd file to the same folder as those objects.** 
+
 # Inserting images
 
 If you're not familiar with LaTeX, you probably don't want to type out all the actual *math* in your homework solutions. Save your handwritten solutions as a .png file **in your working directory.**
@@ -61,11 +69,7 @@ Upload your handwritten solution for part a) of some homework problem
 #### Part a)
 The exponential smoother is:
 
-[ANSWER]
-
-You can also add captions to figures, if you want.
-
-[ANSWER]
+[ANSWER]ss
 
 {{< pagebreak >}}
 
@@ -105,9 +109,7 @@ If your markdown syntax is bugging out, try leaving one line of **vertical space
 * Lists (like this one) but not list *items*
 
 #### Creating a Table
-
-This might be handy for displaying output like model coefficients and p-values in your final report.
-It's compatible with in-line code, too.
+This might be handy for displaying output like model coefficients and p-values in your final report. It's compatible with in-line code, too.
 
 | A  | B    | C    | D    | E  | F  |
 |:---|:-----|:----:|-----:|:---|:---|
@@ -118,10 +120,12 @@ It's compatible with in-line code, too.
 
 Notice the alignment of the columns is controlled by the placement of the colon (:)
 
+# TLDR
 
+I suggest you put your own TLDR here. 
+It's a good way to make sure the big ideas stick.
 
-
-
+Think: what would quin the bunny want to hear?
 
 
 
