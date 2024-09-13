@@ -14,7 +14,7 @@ Unlike the pdfs in the [printable slides](https://github.com/skyepaphora/TimeSer
 |:------:|:-----------|:-----------|:-----------|
 | 1      | (summer)   | [What is a Time Series?](https://docs.google.com/presentation/d/1g-OGQTh_g2aNg0lSEX-dvQVbnzPqPLODM2g6LH18bW4/edit?usp=sharing) | [Eliminating Trends](https://docs.google.com/presentation/d/1FGfncxANPGrMabziSMltRtQReDQqf7V8f-vRPyC1R4M/edit?usp=sharing) | 
 | 2      | (workshop) | [Estimating Seasonality](https://docs.google.com/presentation/d/1niDz6BFsiT_4ndiJrSq0pzmh5qmhftUYWsqSdaLoRs8/edit?usp=sharing) | [Covariance \& Correlation](https://docs.google.com/presentation/d/1qal1azxd1VVXZRc2nhlW15UqmKE663kCRTlvKNvuPdE/edit?usp=sharing) |
-
+| 3      | (workshop) | Stationarity \& Autocovariance | Sample ACFs |
 ---
 
 
