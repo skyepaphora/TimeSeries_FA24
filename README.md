@@ -6,7 +6,8 @@
 
 ## Google Slides Presentations
 
-The following links provide access to the course's full slideshows \ 
+The following links provide access to the course's full slideshows 
+
 unlike the printable pdfs the [printable slides](https://github.com/skyepaphora/TimeSeries_FA24/tree/main/Printable_Slides) folder, these slideshows **include gifs and videos.**
 
 | Week   | Monday     | Wednesday  | Friday     |
