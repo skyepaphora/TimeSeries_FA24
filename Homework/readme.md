@@ -4,11 +4,22 @@ Submit your work as a Quarto document to [Crowdmark](https://app.crowdmark.com/c
 
 ---
 
-### Notes
-I decided to lean heavily into the Super Mario Galaxy motif, for fun. Copyright Nintendo. Everything you need to know is explained on the first couple of pages.
+## Uploading your assignment to Crowdmark
 
+Look for the "Bulk Upload" button, and click it.
 
-### Versions
-The COOL version of this assignment is the one called [Room_1.pdf](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/Homework/Room_1.pdf)
+![](C:/Users/skyep/Desktop/464/secret_TS-24/Other/pics/1.png)
 
-The less cool (but more legible and also free of copyrighted imagery, hence its use on Crowdmark) version is the one called [Homework_1](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/Homework/Homework_1.pdf). It also has some extra white space in case you want to write on the pdf directly.
+You can then select different pages and assign them to the correct Star. Below, I'm assigning page 4 to Star 1, and page 5 to Star 3, for example. 
+
+![](C:/Users/skyep/Desktop/464/secret_TS-24/Other/pics/2.png)
+
+Click DONE. You might see a warning pop up. Ignore it. 
+You might see another warning pop up. Ignore it again.
+When you scroll down, you should see your pages uploaded to the right places. It should look like this:
+
+![](C:/Users/skyep/Desktop/464/secret_TS-24/Other/pics/3.png)    
+
+and not this:
+
+![](C:/Users/skyep/Desktop/464/secret_TS-24/Other/pics/4.png)
