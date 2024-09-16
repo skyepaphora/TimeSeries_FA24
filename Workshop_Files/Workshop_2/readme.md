@@ -8,7 +8,7 @@ That means **Wednesday, September 18th will be a workshop,**
 at least for the first half of class.
 
 **NOTICE:** Now that I've uploaded partial solutions to Github (see below for details),
-you have everything you need to complete parts **a)** and **b)** of the two R-based problems in Room (Homework) 1.
+you have everything you need to complete parts **a)** and **b)** of the R-based problems in Room 1.
 
 ## W2\_Monday Files
 
