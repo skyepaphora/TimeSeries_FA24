@@ -29,11 +29,9 @@ I renamed the old `W2` files to `W2_Empty`. These will remain available to you, 
 
 ## Workshop Agenda
 
-#### Discussion:
-Skye's "pen" analogy for time series modelling.
+1. Discussion: Skye's "pen" analogy for time series modelling.
 
-#### Workshop:
-Make sure you bring your laptop to class. 
+2. Workshop: Make sure you bring your laptop to class. 
 
 ## Learning Outcomes
 
