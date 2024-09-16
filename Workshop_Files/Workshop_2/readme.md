@@ -1,6 +1,6 @@
 # Workshop 2: September 16th + 18th
 
-# A reflection on Workshop 2, part I
+## A reflection on Workshop 2, part I
 
 Okay. Obviously we went a bit too fast today. I'm sorry.
 On Wednesday, we will pick up where we left off.
