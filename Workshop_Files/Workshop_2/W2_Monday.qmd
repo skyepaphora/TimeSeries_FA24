@@ -7,7 +7,6 @@ subtitle: |
 format: 
   pdf:
     fig-width: 8.5
-    cache: true
 ---
 
 # Setup
@@ -35,7 +34,7 @@ in the console. The CONSOLE. Not the SCRIPT.
 #| label: Setup
 #| warning: false
 
-# Load ITSMR
+library(itsmr) # Load ITSMR. This also loads the wine dataset
 ```
 
 #### Data
@@ -56,6 +55,7 @@ It's included with the ITSMR package, so we don't need to load any external file
 #| label: bad-plot
 # --- Plotting
 # make the world's most basic plot of the data
+plot(wine)
 ```
 
 Okay... this doesn't really tell us what's going on. 
@@ -68,22 +68,28 @@ with an appropriate x (time) axis.
 #| label: good-plot
 
 # --- Time Axis: create a function [axis.wine()] to add this axis on the fly
-# indicate 1 tick every January (total = 12)
+year.ticks <- 12*(0:11) + 1 # indicate 1 tick every January (total = 12)
 
-# bottom edge of plot
-# tick placement
-# tick labels
+axis.wine <- function(){
+  axis(side = 1,            # bottom edge of plot
+       at   = year.ticks,   # tick placement
+       labels = 1980:1991)  # tick labels
+}
 
 # --- Base plot: create a function [plot.wine()] to speed-plot the data
-# main title
-# x-axis label
-# y-axis label
-# lines + points
-# bullets (trust me)
-# NO X-AXIS TICKS!
-# add appropriate axis
+plot.wine <- function(){
+  plot.ts(wine,
+          main = "Happy Austrailian Red Wine Sales",  # main title
+          xlab = "Time (in years)",                   # x-axis label
+          ylab = "Volume Sold (kL)",                  # y-axis label
+          type = "o",                                 # lines + points
+          pch = 20, cex = 0.6,                        # bullets (trust me)
+          xaxt = 'n')                                 # NO X-AXIS TICKS! (yet)
+  axis.wine() # add x-axis 
+}
 
 # --- Test wine-plotting function
+plot.wine()
 ```
 
 \newpage
@@ -122,18 +128,31 @@ I'm going to go with linear, that is, $p=1$.
 #| label: poly-regression
 
 # --- Estimation
+m.pr <- trend(wine, p = 1)
+
 # --- Plotting
-# Subtitle indicating model
+plot.wine()                           # Initial plot, using our function
+mtext("Polynomial Regression: p = 1") # Subtitle indicating model used
+lines(m.pr, col = "blue")             # Adds our m_t estimate
 ```
 
-Now we need to compute and plot the residuals.
+Now we need to compute and plot the residuals: $(x_t - \hat m_t)$.\
+This is like the ink tube with the spring still attached.
 
 ```{r}
 #| label: pr-residuals
 
 # --- Residuals
+rm.pr <- wine - m.pr
+
 # --- Plot
-# (draw a dashed line at y = 0)
+plot.ts(rm.pr,
+        main = "Happy Wine Residuals",
+        ylab = "Residual Value",
+        xaxt = 'n')  # <- makes room for our special x-axis
+axis.wine()                            # add special x-axis
+mtext("Polynomial Regression: p = 1")  # indicate model
+abline(h = 0, lty = 2)                 # (draws a dashed line at y = 0)
 ```
 
 What we want to see is some kind of noisy but regular wave-like structure,
@@ -151,10 +170,27 @@ We'll plot the estimate and residuals side-by-side.
 #| label: MA-smoother
 
 # --- Trend Estimation & Residuals
+m.ma <- smooth.ma(wine, q = 7) # estimated m_t
+rm.ma <- wine - m.ma           # calculated residuals x_t - \hat{m}_t
+
 # --- Plotting
-# Matrix of plots: 1 row, 2 columns
+par(mfrow = c(1,2)) # OPTIONAL matrix of plots: 1 row, 2 columns
+                    # (it puts 2 plots side-by-side in the PDF)
+                    # (not extremely important but good to know how to do)
+
 # Estimated m_t
+plot.wine()                    # Initial plot, using our function
+mtext("MA smoother: q = 7")    # Subtitle indicating model used
+lines(m.ma, col = "red")       # Adds our NEW (MA-smoother) m_t estimate
+
 # Residuals from m_t
+plot.ts(rm.ma,                         # MA-smoother residuals!
+        main = "Happy Wine Residuals",
+        ylab = "Residual Value",
+        xaxt = 'n')  # <- makes room for our special x-axis
+axis.wine()                            # add special x-axis
+mtext("MA smoother: q = 7")            # indicate model
+abline(h = 0, lty = 2)                 # (draws a dashed line at y = 0)
 ```
 
 #### Exponential Smoothing
@@ -165,10 +201,27 @@ We now repeat the whole thing using an exponential smoother with parameter $\alp
 #| fig-height: 11
 
 # --- Trend Estimation & Residuals
+m.exp <- smooth.exp(wine, alpha = 0.2) # estimated m_t
+rm.exp <- wine - m.exp                 # calculated residuals
+
 # --- Plotting
-# Matrix of plots: 2 rows, 1 column
+par(mfrow = c(2,1)) # OPTIONAL matrix of plots: 2 rows, 1 column
+                    # (2 plots stacked on top of each other in the PDF)
+                    # (again, not important, but good to see as an example)
+
 # Estimated m_t
+plot.wine()                            # Initial plot, using our function
+mtext("Exponential smoother: a = 0.2") # Subtitle indicating model used
+lines(m.ma, col = "green3")            # Adds expo-smoother's m_t estimate
+
 # Residuals from m_t
+plot.ts(rm.exp,                        # Expo-smoother residuals!
+        main = "Happy Wine Residuals",
+        ylab = "Residual Value",
+        xaxt = 'n')  # <- makes room for our special x-axis
+axis.wine()                            # add special x-axis
+mtext("Exponential smoother: a = 0.2") # indicate model
+abline(h = 0, lty = 2)                 # (draws a dashed line at y = 0)
 ```
 
 # Extract $\mathbf{s_t:}$ The Spring
@@ -197,9 +250,26 @@ Let's do the same thing using the `season()` function from ITSMR. Again, we choo
 ```{r}
 #| label: s_plotting
 
+par(mfrow = c(2,1)) # Optional matrix of plots: 2 rows, 1 column
+
 # --- Plotting
 # Estimated s_t: Harmonic Regression
-# Estimated s_t: S1 Method
+# plot.ts(rm.exp,
+#         main = "Happy Wine | Exponential Smoother Residuals",
+#         ylab = "Residual Value",
+#         xaxt = 'n')
+# axis.wine()
+# mtext("Harmonic Regression:  d = ????")
+# # add s_t!
+# 
+# # Estimated s_t: S1 Method
+# plot.ts(rm.exp,
+#         main = "Happy Wine | Exponential Smoother Residuals",
+#         ylab = "Residual Value",
+#         xaxt = 'n')
+# axis.wine()
+# mtext("S1 method:  q = 12")
+# # add s_t!
 ```
 
 # Examine $\mathbf{Y_t:}$ The Residual Ink
@@ -207,9 +277,23 @@ Let's do the same thing using the `season()` function from ITSMR. Again, we choo
 ```{r}
 #| label: y_plotting
 
-# --- Plotting
-# Residuals from s_t: harmonic regression
-# Residuals from s_t: S1 method
+# # Residuals from s_t: harmonic regression
+# plot.ts(????,
+#         main = "Happy Wine Residuals | deseasonalized",
+#         ylab = "Residual Value",
+#         xaxt = 'n')
+# axis.wine()
+# mtext("Harmonic Regression:  d = ????")
+# abline(h = 0, lty = 2)
+# 
+# # Residuals from s_t: S1 method
+# plot.ts(????,
+#         main = "Happy Wine Residuals | deseasonalized",
+#         ylab = "Residual Value",
+#         xaxt = 'n')
+# axis.wine()
+# mtext("S1 method:  q = 12")
+# abline(h = 0, lty = 2) 
 ```
 
 #### Autocorrelation
