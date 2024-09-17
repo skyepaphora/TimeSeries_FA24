@@ -12,7 +12,7 @@ you have everything you need to complete parts **a)** and **b)** of the R-based 
 
 ## W2\_Monday Files
 
-I created a document with the workshop's "solutions" from today. It includes the correct code to produce today's plots, along with 3 trend estimation techniques from the ITSMR package:
+I uploaded with the workshop's "solutions" from today. It includes the correct code to produce today's plots, along with 3 trend estimation techniques from the ITSMR package:
 
 * Polynomial regression `trend(x, p)`
 * MA smoothing `smooth.ma(x, q)`
