@@ -1,37 +1,31 @@
 # Workshop 2: September 16th + 18th
 
-## A reflection on Workshop 2, part I
+I uploaded with the workshop's "solutions" from today. 
+This final version includes everything you need to complete the R-based problems in Room 1.
 
-Okay. Obviously we went a bit too fast today. I'm sorry.
-On Wednesday, we will pick up where we left off.
-That means **Wednesday, September 18th will be a workshop,** 
-at least for the first half of class.
+## Estimation techniques from the ITSMR package
+Use these to complete the R problems for Room 1.
 
-**NOTICE:** Now that I've uploaded partial solutions to Github (see below for details),
-you have everything you need to complete parts **a)** and **b)** of the R-based problems in Room 1.
-
-## W2\_Monday Files
-
-I uploaded with the workshop's "solutions" from today. It includes the correct code to produce today's plots, along with 3 trend estimation techniques from the ITSMR package:
+### TREND: 
 
 * Polynomial regression `trend(x, p)`
 * MA smoothing `smooth.ma(x, q)`
 * Exponential Smoothing `smooth.exp(x, alpha)`
 
-It also includes the **plotting code** for **part 2** of the workshop.
-I'm hoping this will save you some time on Wednesday so we can focus more on the mathematics of what we are doing.
+### SEASONALTY
+
+* Harmonic Regression `hr(x, d)` (can also pass a *vector* of d values)
+* S1 Method `season(x, d)`
+
+### RANDOMNESS
+
+* Autocorrelation `acf(x)` (you haven't used this yet, but it's very simple)
 
 ## W2\_Empty Files
 
 I renamed the old `W2` files to `W2_Empty`. These will remain available to you, and you may work through them as a more thorough exercise, if you so choose.
 
 ---
-
-## Workshop Agenda
-
-1. Discussion: Skye's "pen" analogy for time series modelling.
-
-2. Workshop: Make sure you bring your laptop to class. 
 
 ## Learning Outcomes
 
