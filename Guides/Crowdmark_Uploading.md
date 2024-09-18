@@ -10,14 +10,14 @@ Look for the "Bulk Upload" button, and click it.
 
 You can then select different pages and assign them to the correct Star. Below, I'm assigning page 4 to Star 1, and page 5 to Star 3, for example. 
 
-![](https://github.com/skyepaphora/Skyes_Toolbox/blob/main/Ignore/2.png)
+![](https://github.com/skyepaphora/secret_TS-24/blob/main/Ignore/2.png)
 
 Click DONE. You might see a warning pop up. Ignore it. 
 You might see another warning pop up. Ignore it again.
 When you scroll down, you should see your pages uploaded to the right places. It should look like this:
 
-![](https://github.com/skyepaphora/Skyes_Toolbox/tree/main/Ignore/3.png)    
+![](https://github.com/skyepaphora/secret_TS-24/blob/main/Ignore/3.png)
 
 and not this:
 
-![](https://github.com/skyepaphora/Skyes_Toolbox/tree/main/Ignore/4.png)
+![](https://github.com/skyepaphora/secret_TS-24/blob/main/Ignore/4.png)
