@@ -6,7 +6,7 @@ Submit your work as a Quarto-rendered PDF document to [Crowdmark](https://app.cr
 
 Look for the "Bulk Upload" button, and click it.
 
-![](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/Ignore/1.png)
+![](https://github.com/skyepaphora/secret_TS-24/tree/main/Ignore/1.png)
 
 You can then select different pages and assign them to the correct Star. Below, I'm assigning page 4 to Star 1, and page 5 to Star 3, for example. 
 
