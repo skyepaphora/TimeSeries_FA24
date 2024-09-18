@@ -13,8 +13,8 @@ Unlike the pdfs in the [printable slides](https://github.com/skyepaphora/TimeSer
 | Week   | Monday     | Wednesday  | Friday     |
 |:------:|:-----------|:-----------|:-----------|
 | 1      | (summer)   | [What is a Time Series?](https://docs.google.com/presentation/d/1g-OGQTh_g2aNg0lSEX-dvQVbnzPqPLODM2g6LH18bW4/edit?usp=sharing) | [Eliminating Trends](https://docs.google.com/presentation/d/1FGfncxANPGrMabziSMltRtQReDQqf7V8f-vRPyC1R4M/edit?usp=sharing) | 
-| 2      | (workshop) | [Estimating Seasonality](https://docs.google.com/presentation/d/1niDz6BFsiT_4ndiJrSq0pzmh5qmhftUYWsqSdaLoRs8/edit?usp=sharing) | [Covariance](https://docs.google.com/presentation/d/1qal1azxd1VVXZRc2nhlW15UqmKE663kCRTlvKNvuPdE/edit?usp=sharing) |
-| 3      | (workshop) | (workshop continued) + Correlation \& [Stationarity](https://docs.google.com/presentation/d/19HfKOL-80LWcTmQsbRdctlrVntZrEel2pO6Xze2vf-o/edit?usp=sharing) (yikes)| Autocovariance \& Sample ACFs |
+| 2      | (workshop 1) | [Estimating Seasonality](https://docs.google.com/presentation/d/1niDz6BFsiT_4ndiJrSq0pzmh5qmhftUYWsqSdaLoRs8/edit?usp=sharing) | [Covariance](https://docs.google.com/presentation/d/1qal1azxd1VVXZRc2nhlW15UqmKE663kCRTlvKNvuPdE/edit?usp=sharing) |
+| 3      | (workshop 2a) | (workshop 2b) + [Correlation](https://docs.google.com/presentation/d/1JYyMsLhCc1lapr8aDQPZdKD5yo8XU88zzjZ6NJhCX-s/edit?usp=sharing) + [Stationarity](https://docs.google.com/presentation/d/19HfKOL-80LWcTmQsbRdctlrVntZrEel2pO6Xze2vf-o/edit?usp=sharing)| Autocovariance + Sample ACFs |
 ---
 
 
@@ -31,14 +31,3 @@ Unlike the pdfs in the [printable slides](https://github.com/skyepaphora/TimeSer
 
 
 
-
-<!--- ## Software Guides
-
-**Warning: some information in these guides may be out of date. Expect updates over the next week or so.**
-
-You may need help installing the computing software required for this course. Here are a couple of guides.
-
->[Guide for Windows](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/Guides/SoftwareGuide_Windows.md)\
->[Guide for Mac](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/Guides/SoftwareGuide_Mac.md)
-
-These guides were mostly written by some of my profs/colleagues at Trent University. *They also made videos!* These will be available some time this week, hopefully. You may find these videos particularly helpful if you have a Mac. --->
