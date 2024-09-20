@@ -34,8 +34,7 @@ in the console. The CONSOLE. Not the SCRIPT.
 #| label: Setup
 #| warning: false
 
-# Load ITSMR
-library(itsmr)
+library(itsmr) # Load ITSMR
 ```
 
 #### Data
@@ -71,9 +70,9 @@ year.ticks <- 12*(0:11) + 1 # indicate 1 tick every January (total = 12)
 axis.wine <- function(){
   axis(side = 1,            # bottom edge of plot
        at   = year.ticks,   # tick placement
-       labels = 1980:1991)  # tick labels
+       labels = 1980:1991,  # tick labels
+       las = 3)             # sideways years, if you want <3
 }
-
 plot.wine <- function(){
   plot.ts(wine,
           main = "Happy Austrailian Red Wine Sales",  # main title
