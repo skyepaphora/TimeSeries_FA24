@@ -173,7 +173,7 @@ plot.wine(); mtext("MA smoother: q = 7")
 lines(m.ma, col = "red")
 
 # Residuals from m_t
-plot.ts(rm.pr,
+plot.ts(rm.ma,
         main = "Happy Wine Residuals",
         ylab = "Residual Value",
         xaxt = 'n')
@@ -279,7 +279,6 @@ axis.wine(); mtext("S1 method:  q = 12"); abline(h = 0, lty = 2)
 ```
 
 #### Autocorrelation
-We will learn what this is on Wednesday. 
 Basically, it describes the correlation between any two points in the series,
 as a function of the time-distance between those two points.
 Noise, by definition, has no such correlation across time.
