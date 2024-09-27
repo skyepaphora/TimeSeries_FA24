@@ -1,0 +1,90 @@
+---
+title: "IF... you converted your data to time series..."
+format: 
+  pdf:
+    fig-width: 8.5
+    fig-height: 4.5
+---
+
+Suppose you decide to convert your dataset to a time series object.
+
+```{r}
+library(itsmr)              # load data and functions
+
+xt <- ts(wine,              # data -> time series
+         start = c(1980,1), # Jan 1980
+         end = c(1991,10),  # Oct 1991
+         frequency = 12)    # 12 observations/year 
+
+plot.ts(xt, main = "happy wine :)")
+```
+
+Let's make a function to produce this plot automatically, 
+and let's also modify the axis to have better time resolution. 
+
+\newpage
+```{r}
+plot.wine <- function(){
+  
+  plot.ts(xt, main = "happy wine :)", xaxt = 'n')
+  axis(1, 1980:1991, 1980:1991)
+
+}
+```
+
+Now, suppose we want to plot a line of best fit. 
+How do we get it to show up?
+
+```{r}
+m.pr <- trend(wine,1) # polynomial regression
+
+
+par(mfrow = c(1,2))
+
+plot.wine()
+lines(m.pr, col = "blue") # o no where is it
+
+# plot.wine()
+# lines(1980:1991, m.pr, col = "blue") # fail
+
+plot.wine()
+lines( 1980:(1980+length(m.pr)-1), m.pr, col = "blue") # too shallow
+points(1980:(1980+length(m.pr)-1), m.pr, col = "blue") # years not months!
+```
+
+We need to convert our trend estimate $\hat m_t$ to a time series object as well! 
+(With the same set of time points as our series $x_t$)
+
+```{r}
+par(mfrow = c(1,1))
+
+m.pr <- ts(m.pr,              # estimate -> time series
+           start = c(1980,1), # Jan 1980
+           end = c(1991,10),  # Oct 1991
+           frequency = 12)    # 12 observations/year 
+
+plot.wine()
+points(m.pr, col = "blue")    # use lines (not points) on your assignment
+```
+
+You'll need to go through this process for most ITSMR function outputs.
+I'd recommend making a `ts.wine(x)` function or something.
+But you generally *don't* need to do this when you calculate *residuals,*
+since 
+
+$$
+\text{time series} - \text{time series of same length} = \text{time series} 
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
