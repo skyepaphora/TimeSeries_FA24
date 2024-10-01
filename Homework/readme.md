@@ -1,4 +1,1 @@
 Submit your work as a Quarto-rendered PDF document to [Crowdmark](https://app.crowdmark.com/courses/stat-464-864-discrete-time-series-analysis-f24).
-
-**Instructions for uploading to Crowdmark:** 
-[Click here]
