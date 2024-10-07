@@ -60,23 +60,23 @@ The easy way to do this is by using the functions `sim` and `specify`, from ITSM
 
 ```{r}
 # --- Specify Parameters
-# theta <- c(0.25, 0.75)
-# s     <- 2
-# N     <- 500
+theta <- c(0.25, 0.75)
+s     <- 2
+N     <- 500
 
-# # --- Simulate!
-# model <- specify(,  # give it your MA parameters
-#                  sigma2 = )  # noise variance
-# 
-# x     <- sim(n = ,    # number of simulations
-#              a = )  # specify ARMA model
+# --- Simulate!
+model <- specify(__ = _____, # give it your MA parameters
+                 sigma2 = )  # noise variance
+
+x     <- sim(n = _,     # number of simulations
+             a = _____) # specify ARMA model
 ```
 
 ```{r}
 #| echo: false   #  stops Quarto from showing this code chunk
 
-# kable( t(model), # "t()" transposes list to horizontal vector
-#        caption = "This table was created using the `kable` function.")
+kable( _______, # "t()" transposes list to horizontal vector
+       caption = "This table was created using the `kable` function.")
 ```
 
 #### Plotting
@@ -88,27 +88,27 @@ Since this is simulated data, there are no units or scientific details to specif
 #| fig-height: 8.5
 par(mfrow = c(2,1), mar = c(4,4,4,1))
 
-# # --- Create noise series z(t)
-# z <- ________________
+# --- Create noise series z(t)
+z <- ________________
 
-# # --- Time plots
-# _________, main = "")
-# mtext("z(t): simulated wn(0,4)") # subtitle
+# --- Time plots
+_________, main = "")
+mtext("z(t): simulated wn(0,4)") # subtitle
 
-# _________, main = "x(t): simulated MA(2)")
-# mtext(  paste("theta =", list(theta)))  # puts theta vals in the subtitle
+_________, main = "x(t): simulated MA(2)")
+mtext(  paste("theta =", list(theta)))  # puts theta vals in the subtitle
 ```
 
 ```{r}
 #| fig-height: 8.5
 par(mfrow = c(2,1), mar = c(4,4,4,1))
 
-# # --- ACF plots
-# _____, main = "")
-# mtext("ACF of z(t): white noise wn(0,4)")
-# 
-# _____, main = "ACF of x(t): simulated MA(2)")
-# mtext(paste("theta =", list(theta) ))
+# --- ACF plots
+_____, main = "")
+mtext("ACF of z(t): white noise wn(0,4)")
+
+_____, main = "ACF of x(t): simulated MA(2)")
+mtext(paste("theta =", list(theta) ))
 ```
 
 **Time plots:** 
@@ -170,29 +170,29 @@ according to the desired model.
 The remaining 500 observations form our final simulation $y_t$.
 
 ```{r}
-# # --- Specify Parameters
-# phi <- c(0.25, 0.75)
-# s   <- 2
-# N   <- 500
-# M   <- 5*N
+# --- Specify Parameters
+phi <- c(0.25, 0.75)
+s   <- 2
+N   <- 500
+M   <- 5*N
 
-# # --- 1. White noise w_t (length = M)!
-# w <- ________________
+# --- 1. White noise w_t (length = M)!
+w <- ________________
 
-# # --- 2. Seed the series
-# v <- rnorm(N, sd = s)  # some other white noise
-# y <- c(v, rep(0,M-N))  # seed 1 to N, fill rest with 0's, total = M points
+# --- 2. Seed the series
+v <- rnorm(N, sd = s)  # some other white noise
+y <- c(v, rep(0,M-N))  # seed 1 to N, fill rest with 0's, total = M points
 
-# # --- 3. Simulate M-length AR(2)
-# for(t in (N+1):M) {                
-#   # ___________________________________________  # our model!
-# }
+# --- 3. Simulate M-length AR(2)
+for(t in (N+1):M) {
+  # ___________________________________________  # our model!
+}
 
-# # --- 4. Throw away first (M-N) points as 'burn-in'
-# y.full <- y  # store the full series for later in the workshop :)
-# 
-# w <- w[(M-N+1):M]
-# y <- y[(M-N+1):M]
+# --- 4. Throw away first (M-N) points as 'burn-in'
+y.full <- y  # store the full series for later in the workshop :)
+
+w <- w[(M-N+1):M]
+y <- y[(M-N+1):M]
 ```
 
 #### Plotting
@@ -201,11 +201,11 @@ The remaining 500 observations form our final simulation $y_t$.
 #| fig-height: 4
 par(mar = c(4,4,3.5,1))
 
-# ________, main = "y(t): simulated AR(2)")
-# mtext(paste("phi =", list(phi) ))
-# 
-# _____, main = "ACF of y(t): simulated AR(2)")
-# mtext(paste("phi =", list(phi) ))
+________, main = "y(t): simulated AR(2)")
+mtext(paste("phi =", list(phi) ))
+
+_____, main = "ACF of y(t): simulated AR(2)")
+mtext(paste("phi =", list(phi) ))
 ```
 
 # Comparing the sample ACFs to the theoretical ACF
@@ -228,16 +228,17 @@ To get $\rho_X(h),$ we just standardize by dividing $\gamma_X(h)/\gamma_X(0)$.
 
 ```{r}
 #| fig-height: 4.5
-# rho.y <- c( ______________,  # h=0
-#             ______________,  # h=1
-#             ______________,) # h=2
-# 
-# rho.y <- ______________    # standardize by rho(0)
-# 
-# acf(x, main = "ACF of x(t): simulated MA(2)")
-# mtext(paste("theta =", list(theta) ))
-# 
-# points(_______) # plot true rho over sample rho
+
+rho.y <- c( ______________,  # h=0
+            ______________,  # h=1
+            ______________,) # h=2
+
+rho.y <- ______________    # standardize by rho(0)
+
+acf(x, main = "ACF of x(t): simulated MA(2)")
+mtext(paste("theta =", list(theta) ))
+
+points(_______) # plot true rho over sample rho
 ```
 
 # Linear Regression
@@ -250,31 +251,33 @@ we'll call the predictor and response $u,v$ instead of $x,y$.
 
 ```{r}
 #| fig-height: 5
-# u <- rnorm(N) # predictor (just using noise, here)
-# e <- rnorm(N) # noise vector
-# b <- 2        # true regression coefficient
-# 
-# v <- _______  # response
-# 
-# # --- Create model 
-# model1 <- lm(_______)  # -1 removes intercept
-# 
-# # --- Plot line of best fit
-# plot(u,v, main = "Simple Linear Regression")
-# ________, col = "blue")
+
+u <- rnorm(N) # predictor (just using noise, here)
+e <- rnorm(N) # noise vector
+b <- 2        # true regression coefficient
+
+v <- _______  # response
+
+# --- Create model
+model1 <- lm(_______)  # -1 removes intercept
+
+# --- Plot line of best fit
+plot(u,v, main = "Simple Linear Regression")
+________, col = "blue")
 ```
 
-# Estimting the AR(2) coefficients $\phi_1$ and $\phi_2$
+# Estimating the AR(2) coefficients $\phi_1$ and $\phi_2$
+**NOTE:** on your assignment, you do NOT need to do this burn-in thing, with the huge `y.full` vector. Just use the indices suggested by the problem statements. I'm being thorough here for demonstration purposes. 
 
 ```{r}
-# model2 <- 
-#   lm(________________________________________________________________)
-# 
-# phi.hat <- _________________
-# 
-# rownames(phi.hat) <- c("phi 1", "phi 2")
-# 
-# kable(phi.hat)
+model2 <-
+  lm(________________________________________________________________)
+
+phi.hat <- _________________
+
+rownames(phi.hat) <- c("phi 1", "phi 2")
+
+kable(phi.hat)
 ```
 
 The estimates $\hat\phi_1$ and $\hat\phi_2$ are quite good. 
@@ -283,21 +286,19 @@ to the standard error column, above.
 Or, we can look at the confidence intervals directly:
 
 ```{r}
-# # --- within 1.96 times the standard error?
-# result <- data.frame(
-#   estimate = phi.hat[,1],
-#   confint(model2),
-#   "within CI?" = ((phi.hat[,1] > confint(model2)[,1]) 
-#                 &(phi.hat[,1] < confint(model2)[,2]))
-# )
-# colnames(result)[2:3] <- colnames(confint(model2))
-# 
-# kable(result)
+# --- within 1.96 times the standard error?
+result <- data.frame(
+  estimate = phi.hat[,1],
+  confint(model2),
+  "within CI?" = ((phi.hat[,1] > confint(model2)[,1])
+                &(phi.hat[,1] < confint(model2)[,2]))
+)
+colnames(result)[2:3] <- colnames(confint(model2))
+
+kable(result)
 ```
 
-
-
-
+The estimates fall within the 95% confidence intervals! nice :)
 
 
 
