@@ -19,7 +19,7 @@ Unlike the pdfs in the [printable slides](https://github.com/skyepaphora/TimeSer
 | 5      | (Tuesday) [Linear Filters \& Causality](https://docs.google.com/presentation/d/1td6L-J2QOFI2LwVrzaB4oylOJu5ZjJNr0GE5ZbI3_s0/edit?usp=sharing) | [MA Processes](https://docs.google.com/presentation/d/1gS04tE9nomCC1QSs-VmI4UfAXUDuMOqAxFJ-eY4bsIA/edit?usp=sharing) |[AR Processes](https://docs.google.com/presentation/d/16Ep2ZcQs1iKR0mqwAucSYsYkblGRFRdYTrMer5JptY0/edit?usp=sharing)|
 | 6      | [Workshop 3](https://github.com/skyepaphora/TimeSeries_FA24/tree/main/Workshop_Files/Workshop_3) | [Backshift Operator](https://docs.google.com/presentation/d/1CgYQL6sVJi7zyXT96F28rc0HqwnYH7FcrFK9cdH6hZE/edit?usp=sharing) |                                         
 | 7      | (Midterm)  | [Concatenated Filters](https://docs.google.com/presentation/d/1EcGuL_j6HqgizHwCvF3cQc57RFtgmFjn-ZzzNOpCrAY/edit?usp=sharing)| [ARMA(1,1)](https://docs.google.com/presentation/d/1cG9vtgPmuX8VgeM1CHDL6hU4oUDeFW0Cgk4EKvntWqw/edit?usp=sharing) |
-| 8      | [Linear Predictors](https://docs.google.com/presentation/d/1ismTMcFwJ-AqMqY7zvTMt_zrpiLS3xwYjo9aLsVyDEM/edit?usp=sharing)|||
+| 8      | [Linear Predictors](https://docs.google.com/presentation/d/1ismTMcFwJ-AqMqY7zvTMt_zrpiLS3xwYjo9aLsVyDEM/edit?usp=sharing)| N / A | [Minimum MSE + LP Properties](https://docs.google.com/presentation/d/1O2XDX1XABZ_X5iO6v3UN2oQZq9-v2CMS5Ao48ljaMFs/edit?usp=sharing) |
 
 ---
   
