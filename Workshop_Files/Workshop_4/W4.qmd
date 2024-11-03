@@ -1,0 +1,232 @@
+---
+title: "Workshop 4: Forecasting"
+subtitle: |
+    | (there's a "four-casting" pun in there somewhere)
+    |
+    | STAT 464/864 | Discrete Time Series Analysis
+    | Skye P. Griffith, Queen's University - Fall 2024
+format: 
+  pdf:
+    fig-width: 8.5
+    fig-height: 4.5
+---
+
+\vspace*{-80pt}
+
+# Setup
+\vspace*{-10pt}
+```{r}
+library(itsmr); library(knitr)
+```
+||||
+|:-|:------------------------|:---------------------------------------------------|
+|  | **Dataset**      | Happy Australian Red Wine Sales (unit = kilolitres) |
+|  | Source           | Included in the ITSMR Package (no external files)   |
+||||
+|  | **Total Times Sampled** | (Monthly) Jan, 1980 $-$ Oct, 1991 (142 total obs.) |
+|  | Truncated Series | Jan, 1980 $-$ Oct, 1989 (118 obs.) |
+|  | Times to Predict | Nov, 1989 $-$ Oct, 1991 (24 obs.)  |
+```{r}
+t.past   <- 1:118    ;  wine.past   <- wine[t.past  ]  # truncated data
+t.future <- 119:142  ;  wine.future <- wine[t.future]  # desired prediction
+```
+\vspace*{10pt}
+
+```{r}
+#| echo: FALSE
+#| fig-height: 4.25
+par(mar = c(4,4,1,1))
+
+plot.ts(wine.past, xlim = c(1,142),  # trunc. series
+        ylab = "Xt (happy wine)")
+mtext("we want to predict the purple line, using only the black line of data")
+
+lines(x = t.future, y = wine.future  , col = "orchid") # values to predict
+segments(130,wine[130], 131,wine[131], col = "orchid") # connective tissue
+
+abline(v = 130, lty = 3) # time cutoff
+```
+
+# Basic Forecasting using ITSMR
+
+#### Prediction
+1.    Model the data's trend + seasonal components via classical time-series decomposition.
+
+> \scriptsize Note that the available methods include \underline{differencing,} the effect of which is equivalent to modelling step 3 as an ARIMA process. We will discuss this in W5.
+\normalsize
+
+2.    Obtain the residuals from your classical model.
+
+3.    Model the residuals as an ARMA(p,q) process.
+
+4.    Predict some $h$ steps into the future.
+
+#### Forecasting Plot
+1.    Plot the "past data," leaving enough horizontal space for our prediction line,\
+and enough vertical space for its 95\% confidence interval.
+
+2.    Add our prediction and its 95\% CI to the plot.
+
+#### Comparison plot
+1.    Plot the true "future data" (last 12 months of the original dataset) by itself.
+
+2.    Add our forecast (+ its 95\% CI) to the plot, on top of the true data.
+
+#### Interpretation
+1.    Does the true data generally fall within the 95\% CI? It should, 95\% of the time.
+
+2.    How wide is that CI? The wider this interval, the worse our estimate's stardard error is.
+
+# Workshop 4 Models
+
+| Model | Trend Estimation  | Seasonal Component Estimation | ARMA(p,q)   |
+|:-----:|:------------------|:------------------------------|:------------|
+|     0 | Linear Regression | S1 Method; $d = 12$             | MA(3)     |
+|     1 | Linear Regression | Harmonic regression; $d = 4$    | AR(2)     |
+|     2 | Linear Regression | Harmonic regression; $d = 12$   | AR(2)     |
+|     3 | Linear Regression | Harmonic regression; $d = 4,12$ | AR(2)     |
+
+\newpage
+### Model 0
+\vspace*{-15pt}
+```{r}
+# --- Classical Model
+M.0 <- c(____________             # model a linear trend
+         ____________)            # S1 method with period 12
+R.0 <- Resid(_________, M = ___)  # get classical model's residuals
+
+# --- ARMA
+A.0 <- arma(x = ___,  # input residuals
+            p = _,    # Order - AR(p)
+            q = _)    # Order - MA(q)
+
+# --- Forecast
+fc.0 <- forecast(_________,  # Predictors
+                 _______,    # classical model
+                 _______,    # ARMA(p,q) model
+                 ______,     # Predict the next 12 months
+                 _______)    # don't display result: plz always set opt = 0
+```
+
+### Models 1,2 \& 3
+\vspace*{-15pt}
+```{r}
+# --- Classical Models
+M.1 <- c(_______, _,    # linear regression
+         ____   , _)    # Harmonic regression with period 4 
+
+M.2 <- c(_______, _, ____, __)  
+M.3 <- c(_______, _, ____, _______)  
+
+# --- Residuals
+R.1 <- Resid(_________, M = ___)
+
+# --- AR(2), equivalently ARMA(2,0) 
+A.1 <- arma(x = ___, p = _, q = _) 
+
+# --- Forecast
+fc.1 <- forecast(_________, ___, ___, __, _)
+```
+
+# Plotting Prep
+
+#### Plot Function
+```{r}
+plot.wine <- function(x.range = range(______,________), # default x-axis lim
+                      y.range = range(wine)){           # default y-axis lim
+  
+  plot.ts(wine.past,
+          xlim = _______,
+          ylim = y.range,
+          
+          # ---- the rest is all from workshop 2 
+          main = "Happy Austrailian Red Wine Sales",  # main title
+          xlab = "Time (in years)",                   # x-axis label
+          ylab = "Volume Sold (kL)",                  # y-axis label
+          type = "o",                                 # lines + points
+          pch = 20, cex = 0.6,                        # bullets
+          xaxt = 'n')                                 # NO X-AXIS TICKS
+  
+  axis(side = 1,              # bottom edge of plot
+       at   = 12*(0:12) + 1,  # 1 tick every January (total = 13)
+       labels = 1980:1992)    # tick labels
+}
+```
+
+#### Forecasting Plot Function
+```{r}
+plot.forecast <- function(fc){                 # input prediction
+  points(x = ________,                         # plot prediction onto future
+         y = _______,
+         col = "blue", type = "o", pch = 20)   # blue lines with solid points
+
+  lines(________, ____, col = "red", lty = 3)  # lower confidence limit (95%)
+  lines(________, ____, col = "red", lty = 3)  # upper confidence limit (95%)
+}
+```
+
+# Results - Model 0
+\vspace*{-15pt}
+```{r}
+#| fig-height: 8
+par(mfrow = c(2,1), mar = c(4,4,3.5,1))
+
+# --- Forecasting Plot
+plot.wine(y.range = range(____, ______, ______)) # make room for 95% CI
+mtext("MODEL 0:  Linear trend;  S1 method (d=12);  ARMA(0,3)")
+plot.forecast(____)
+
+# --- Comparison Plot
+plot.wine(x.range = range(________),
+          y.range = range(wine.future, fc.0$l, fc.0$u))
+mtext("Comparing our forecast to the actual data - MODEL 0")
+
+points(x = ________, y = ___________, type = "o")  # TRUE future vals
+plot.forecast(____)                                # ESTIMATED future vals
+```
+\vspace*{-20pt}
+#### Interpretation
+
+???????????????????????
+
+# Results - Models 1, 2 \& 3
+```{r}
+#| fig-height: 11
+#| fig-width: 8.5
+par(mfrow = c(3,1), mar = c(4,4,4,1))
+
+# --- Model 1
+plot.wine(x.range=range(t.future), y.range=range(wine.future,fc.1$l,fc.1$u))
+mtext("Comparing our forecast to the actual data - MODEL 1")
+
+points(x = t.future, y = wine.future, type = "o")  # TRUE future vals
+plot.forecast(fc.1)                                # ESTIMATED future vals
+
+# --- Model 2
+plot.wine(x.range=range(t.future), y.range=range(wine.future,fc.2$l,fc.2$u))
+mtext("Comparing our forecast to the actual data - MODEL 2")
+
+points(x = t.future, y = wine.future, type = "o")  # TRUE future vals
+plot.forecast(fc.2)                                # ESTIMATED future vals
+
+# --- Model 3
+plot.wine(x.range=range(t.future), y.range=range(wine.future,fc.3$l,fc.3$u))
+mtext("Comparing our forecast to the actual data - MODEL 3")
+
+points(x = t.future, y = wine.future, type = "o")  # TRUE future vals
+plot.forecast(fc.3)                                # ESTIMATED future vals
+```
+
+#### Interpretation
+
+?????????????????
+
+
+
+
+
+
+
+
+
+
