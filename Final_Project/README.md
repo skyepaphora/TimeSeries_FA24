@@ -1,4 +1,4 @@
-# Final Project $\,$ | $\,$ Proposal
+# Final Project: Proposal
 
 This is worth 5\% of your grade. 
 It's an opportunity for the TA and I to look at your dataset + analysis plan,
