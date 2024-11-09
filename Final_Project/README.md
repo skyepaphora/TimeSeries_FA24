@@ -1,13 +1,18 @@
-# Proposal
+${\Huge \text{Final Project}\quad | \quad {Proposal}} \normalsize$
+
 This is worth 5\% of your grade. 
 It's an opportunity for the TA and I to look at your dataset + analysis plan,
 and make sure everything looks appropriate before you commit to anything. 
 There are two different game modes to choose from:
 
-#### Single-player mode
+---
+
+# Game Modes
+
+### Single-player mode
 This is the default mode, so you can just follow the regular rubric. 
 
-#### Two-player mode
+### Two-player mode
 If you want, you can work in pairs. 
 There are three extra things to consider if you choose this mode:
 
@@ -36,7 +41,9 @@ That is, in regards to the quality of writing, plots, depth of analysis, length,
 This discrepancy will be small, but you should take it into consideration.
 4.  Grad students... If you team up, it's apocalypse mode: you better hand in a work of art! ;) 
 
-## Guide
+---
+
+# Guide
 Submit your final proposal as a Quarto-rendered PDF to Crowdmark. 
 If you find your plot is taking up too much space, consider adding the line of code 
 `par(mar = c(4,4,2,1))` before your plotting code, in the *same chunk.* 
@@ -44,9 +51,9 @@ If your code is taking up too much space, get rid of some line breaks, or use se
 
 **Single-player:** MAXIMUM 2 pages, including plot.
 
-**Two-player** MAXIMUM 3 pages, including plot.
+**Two-player:** MAXIMUM 3 pages, including plot.
 
-#### Your Dataset
+### Your Dataset
 Go online and find some time series dataset of a reasonable size. 
 It should be at least 50 observations long, but not so long that it slows down RStudio.
 (I like working with datasets in the low thousands, myself)
@@ -57,16 +64,16 @@ It should be at least 50 observations long, but not so long that it slows down R
 3.  Describe any other attributes of the data that you think may be relevant.
 Will you have to "clean" the dataset, at all?
 
-#### Plotting
+### Plotting
 Demonstrate that you can load and plot the data, 
 according to the regular "Plotting Etiquette" you've used in Rooms 1-3.
 
-#### Motivation
+### Motivation
 1.  Why are you interested in this dataset? What are you trying to learn?
 2.  Do you have any hypotheses about what you will find when you model the data?
 3.  If the data supports your hypothesis, what are the implications? What do we learn?
 
-#### Methodology
+### Methodology
 1.  Do you anticipate modelling some trend, for this data, 
 using Classical Time Series modelling techniques? Which ones?
 2.  Do you plan on modelling any seasonal components? How many?
