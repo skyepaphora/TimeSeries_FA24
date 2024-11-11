@@ -49,9 +49,7 @@ If you team up, it's apocalypse mode: you better hand in a work of art! ;)
 ---
 
 # Learning Outcomes
-\scriptsize
 (a.k.a. the stuff you have to demonstrate that you've learned, without the use of AI)
-\normalsize
 
 *After successfully writing this proposal, you will know how to:*
 
