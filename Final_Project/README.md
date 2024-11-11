@@ -81,7 +81,8 @@ However, I do still want to see the code you use to load and clean the data.
 
 **Single-player:** Maximum $\underline{2}$ pages, including plot.
 
-**Two-player:** Maximum $\underline{3}$ pages, including plots. Be sure to include
+**Two-player:** Maximum $\underline{3}$ pages, including plots. 
+Be sure to include the names and student numbers of BOTH PLAYERS in the Quarto title-section.
 
 ### Your Dataset
 Go online and find some time series dataset of a reasonable size. 
