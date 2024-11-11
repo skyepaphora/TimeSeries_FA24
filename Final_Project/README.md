@@ -75,7 +75,7 @@ Submit your final proposal as a Quarto-rendered PDF to Crowdmark.
 Be sure to include the names and student numbers of BOTH PLAYERS in the Quarto title-section.
 
 * If you find your plot is too large, add the code
-`#| fig-height = 3.5` at the very top of your plotting chunk. 
+`#| fig-height = 3.5` at the very top of your plotting chunk. \
 Experiment with that number, for values in the range $[3,5]$, until you find what works.
 * If you find your plot is too cramped, consider adding the line of code \
 `par(mar = c(4,4,2,1))` before your plotting code, in the *same chunk.* 
