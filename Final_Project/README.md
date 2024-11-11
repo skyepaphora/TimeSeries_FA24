@@ -54,15 +54,16 @@ If you team up, it's apocalypse mode: you better hand in a work of art! ;)
 *After successfully writing this proposal, you will know how to:*
 
 1.  Identify a dataset that is an appropriate candidate for 
-Classical and ARMA(p,q) time-series modelling/forecasting. 
+Classical and ARMA(p,q) time-series modelling/forecasting. \
 You should be able to justify your choice of dataset, 
 and describe the variable you intend to model.
-2.  Load and manipulate the dataset such that it can worked with in R. 
+2.  Load and manipulate the dataset such that it can worked with in R. \
 You should be able to create a scientifically meaningful plot your time-series.
 3.  Discuss the motivation behind studying your chosen time-series, 
 including any relevant hypotheses and their implications.
 4.  Determine an analysis plan for modelling and forecasting 
-trends, seasonality, and ARMA behaviour, according to the methods learned in class.
+trends, seasonality, and ARMA behaviour, \
+according to the methods learned in class.
 
 ---
 
@@ -76,7 +77,7 @@ Be sure to include the names and student numbers of BOTH PLAYERS in the Quarto t
 
 * If you find your plot is too large, add the code
 `#| fig-height = 3.5` at the very top of your plotting chunk. \
-Experiment with that number, for values in the range $[3,5]$, until you find what works.
+Experiment with that number for values in the range $[3,5]$, until you find what works.
 * If you find your plot is too cramped, consider adding the line of code \
 `par(mar = c(4,4,2,1))` before your plotting code, in the *same chunk.* 
 * If your code is taking up too much space, get rid of some line breaks, or use semi-colons.
