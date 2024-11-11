@@ -20,12 +20,13 @@ There are three extra things to consider if you choose this mode:
 and include a discussion comparing/contrasting the different results. 
 Call these time series $\{X_t\}$ and $\{Y_t\}$.
 For example, if you are looking at climate data, 
-there might be a variable $(X_t)$ called "Temperature" and a variable $(Y_t)$ called "CO$_2$." 
+there might be a variable $(X_t)$ called "Temperature" and a variable $(Y_t)$ called "$CO_2$." 
 Your task would be to analyse these two time series separately, 
 and then discuss the similarities/differences between their models. 
 You can plot them separately or on the same plot. Do whatever is most *legible.*
 Remember: `par(mfrow = c(1,2), mar = c(4,4,2,1))` lets you put two plots side-by-side.
-2.  You will have to include a **teamwork strategy** in your proposal (AND your final project.)
+2.  You will have to include a **teamwork strategy** in your proposal 
+(AND your final project.)
 One player will be in charge of modelling $\{X_t\}$, and the other player will model $Y_t$.
 Beyond this, tell me the following:
     * Who chose the dataset?
@@ -33,25 +34,56 @@ Beyond this, tell me the following:
     * How will you divide the work when it comes to the *writing* portion of this assignment?
     * Are both players going to contribute to the $\LaTeX$ component of the assignment? 
     If one player does not
-    (for example, if Player 1 has no $\LaTeX$ background but Player 2 is a typesetting-addict ...like Skye)
-    then what will the non-$\LaTeX$ player contribute to make up for this? 
-    (Examples: proof-reading, taking charge of coding comments, cleaning the data, citing sources, etc.)
-3.  Your assignment will be held to a slightly higher standard than it would be in single-player mode.
-That is, in regards to the quality of writing, plots, depth of analysis, length, etc. 
+    (for example, if Player 1 has no $\LaTeX$ background 
+    but Player 2 is a typesetting-addict ...like Skye)
+    then what will the non- $\hspace{-2pt}\LaTeX$ player contribute to make up for this? 
+    (Examples: 
+    proof-reading, taking charge of coding comments, cleaning the data, citing sources, etc.)
+3.  Your assignment will be held to a slightly higher standard 
+than it would be in single-player mode $-$
+that is, in regards to the quality of writing, plots, depth of analysis, length, etc. 
 This discrepancy will be small, but you should take it into consideration.
-4.  Grad students... If you team up, it's apocalypse mode: you better hand in a work of art! ;) 
+4.  Grad students... 
+If you team up, it's apocalypse mode: you better hand in a work of art! ;) 
+
+---
+
+# Learning Outcomes
+\scriptsize
+(a.k.a. the stuff you have to demonstrate that you've learned, without the use of AI)
+\normalsize
+
+*After successfully writing this proposal, you will know how to:*
+
+1.  Identify a dataset that is an appropriate candidate for 
+Classical and ARMA(p,q) time-series modelling/forecasting. 
+You should be able to justify your choice of dataset, 
+and describe the variable you intend to model.
+2.  Load and manipulate the dataset such that it can worked with in R. 
+You should be able to create a scientifically meaningful plot your time-series.
+3.  Discuss the motivation behind studying your chosen time-series, 
+including any relevant hypothesis and their implications.
+4.  Determine an analysis plan for modelling and forecasting 
+trends, seasonality, and ARMA behaviour, according to the methods learned in class.
 
 ---
 
 # Guide
 Submit your final proposal as a Quarto-rendered PDF to Crowdmark. 
-If you find your plot is taking up too much space, consider adding the line of code 
+
+* If you find your plot is too large, add the code
+`#| fig-height = 3.5` at the very top of your plotting chunk. 
+Experiment with that number, for values in the range $[3,5]$, until you find what works.
+* If you find your plot is too cramped, consider adding the line of code 
 `par(mar = c(4,4,2,1))` before your plotting code, in the *same chunk.* 
-If your code is taking up too much space, get rid of some line breaks, or use semi-colons.
+* If your code is taking up too much space, get rid of some line breaks, or use semi-colons.
+* You can also add the line `#| echo: FALSE` to the top of your plotting chunk, 
+to hide the plotting code and save vertical space. 
+However, I do still want to see the code you use to load and clean the data.
 
-**Single-player:** MAXIMUM 2 pages, including plot.
+**Single-player:** Maximum $\underline{2}$ pages, including plot.
 
-**Two-player:** MAXIMUM 3 pages, including plot.
+**Two-player:** Maximum $\underline{3}$ pages, including plots. Be sure to include
 
 ### Your Dataset
 Go online and find some time series dataset of a reasonable size. 
