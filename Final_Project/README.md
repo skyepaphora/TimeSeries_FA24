@@ -60,7 +60,7 @@ and describe the variable you intend to model.
 2.  Load and manipulate the dataset such that it can worked with in R. 
 You should be able to create a scientifically meaningful plot your time-series.
 3.  Discuss the motivation behind studying your chosen time-series, 
-including any relevant hypothesis and their implications.
+including any relevant hypotheses and their implications.
 4.  Determine an analysis plan for modelling and forecasting 
 trends, seasonality, and ARMA behaviour, according to the methods learned in class.
 
