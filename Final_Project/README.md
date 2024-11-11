@@ -81,7 +81,7 @@ Experiment with that number, for values in the range $[3,5]$, until you find wha
 `par(mar = c(4,4,2,1))` before your plotting code, in the *same chunk.* 
 * If your code is taking up too much space, get rid of some line breaks, or use semi-colons.
 * You can also add the line `#| echo: FALSE` to the top of your plotting chunk, 
-to hide the plotting code and save vertical space. 
+to hide the plotting code and save vertical space. \
 However, I do still want to see the code you use to load and clean the data.
 
 ### Your Dataset
