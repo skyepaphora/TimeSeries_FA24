@@ -21,6 +21,7 @@ Unlike the pdfs in the [printable slides](https://github.com/skyepaphora/TimeSer
 | 7      | (Midterm)  | [Concatenated Filters](https://docs.google.com/presentation/d/1EcGuL_j6HqgizHwCvF3cQc57RFtgmFjn-ZzzNOpCrAY/edit?usp=sharing)| [ARMA(1,1)](https://docs.google.com/presentation/d/1cG9vtgPmuX8VgeM1CHDL6hU4oUDeFW0Cgk4EKvntWqw/edit?usp=sharing) |
 | 8      | [Linear Predictors](https://docs.google.com/presentation/d/1ismTMcFwJ-AqMqY7zvTMt_zrpiLS3xwYjo9aLsVyDEM/edit?usp=sharing)| (see Friday lecture video) | [Minimum MSE + LP Properties](https://docs.google.com/presentation/d/1O2XDX1XABZ_X5iO6v3UN2oQZq9-v2CMS5Ao48ljaMFs/edit?usp=sharing) |
 | 9      | [Workshop 4](https://github.com/skyepaphora/TimeSeries_FA24/tree/main/Workshop_Files/Workshop_4) | [Forecasting AR processes](https://docs.google.com/presentation/d/1SQ5vnIGgI0bMRmZFBihFnNpEi_HvbcrHV3dq7rabNk4/edit?usp=sharing) | [Harmony Forecast Tutorial](https://github.com/skyepaphora/TimeSeries_FA24/blob/main/Homework/Room_3/HarmonyForecast_Tutorial.pdf) |
+| 10     | (Rememberance Day) | [MA Forecasting](https://docs.google.com/presentation/d/1mDenOVtq6BJJCCu_ebvpiuFGUpdxhXaeBSZyLRCP-6I/edit?usp=sharing)
 ---
   
 
