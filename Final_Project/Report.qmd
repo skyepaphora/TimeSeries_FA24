@@ -1,0 +1,40 @@
+---
+format: pdf
+---
+
+# Report Guidelines
+
+\begin{tabular}{|ll}
+&    \underline{Classical Time Series Modelling (Unit 1) }  \\[5pt]
+      & 1. \; Identify/model long-term trends (polynomial regression, smoothing, etc.)
+\\    & 2. \; Identify/model seasonal components (harmonic regression, differencing, etc.)
+\\    & 3. \; Determine whether residuals are uncorrelated over time, via the sample ACF
+\\[15pt]
+&    \underline{Linear Filters and ARMA(p,q) processes (Unit 2) }  \\[5pt]
+      & Identify ARMA behaviour in the residuals by examining their sample ACF, 
+\\    & and/or using more quantified diagnostics such as AIC.
+\\[15pt]
+&    \underline{Linear Prediction and Forecasting (Unit 3)}  \\[5pt]
+      & 1. \; Partition the data into training (past) and testing (future) intervals. 
+\\    & 2. \; Evaluate the training model's forecasting abilities by comparing its prediction  
+\\    &    \;\, \quad (and 95\% CI) to the testing data.
+\\    & 3. \; Forecast some length of time into the future, using the full dataset, and plot.
+\\[15pt]
+&     \underline{Theory + Interpretation}  \\[5pt]
+      & 1. \; Was the students model able to effectively capture the data's behaviour?
+\\    &    \;\, \quad If not, what were the main barriers? (non-stationarity, missing data, etc.)
+\\    & 2. \; Were the student's hypotheses supported by the model? 
+\\    & 3. \; What scientific conclusions can be made about the data, given the final model?  
+\end{tabular}
+
+---
+
+# What do you think?
+
+
+
+
+
+
+
+
