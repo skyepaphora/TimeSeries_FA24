@@ -31,7 +31,24 @@ format: pdf
 
 # What do you think?
 
+#### Regarding subsets of the data
+You can use any portion of your chosen dataset, as long as the portion in question is at least $N\approx 50$ observations long. 
 
+#### Formatting!
+1.    It must be a rendered Quarto document (PDF not HTML)
+2.    Plotting Ettiquette
+3.    Latex! alpha = 0.05
+
+$$
+X_t = m_t + s_t + Y_t
+$$
+
+The MA(1) parameter is $\theta = 0.17$. This was found using... 
+#### Teamwork Strategy
+Give it to me again! It may not match your originally proposed plan.
+
+#### 2-player mode
+Both series ($X_t,Y_t$) must be modelled according to methods from Units 1,2 and 3, if relevant.
 
 
 
