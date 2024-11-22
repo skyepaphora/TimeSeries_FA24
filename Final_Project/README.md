@@ -51,4 +51,29 @@ Give it to me again! It may not match your originally proposed plan.
 #### 2-player mode
 Both series ($X_t,Y_t$) must be modelled according to methods from Units 1,2 and 3, if relevant.
 
+#### Do we hveto try and eyeball the numerical parameters when looking at the ACF?
+no
+
+
+
+
+
+
+
+
+
+
+My model is an AMRA(1,2) model
+
+
+
+
+
+
+
+
+
+
+
+
 
