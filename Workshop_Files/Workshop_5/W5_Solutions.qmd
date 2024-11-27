@@ -1,0 +1,191 @@
+---
+title: "Workshop 5: Analysis"
+subtitle: |
+    |
+    | STAT 464/864 | Discrete Time Series Analysis
+    | Skye P. Griffith, Queen's University - Fall 2024
+format: 
+  pdf:
+    fig-width: 8.5
+    fig-height: 4.5
+---
+
+# Setup
+\vspace*{-10pt}
+```{r}
+library(itsmr); library(knitr)
+```
+||||
+|:-|:------------------------|:---------------------------------------------------|
+|  | **Dataset**      | Happy Australian Red Wine Sales (unit = kilolitres) |
+|  | Source           | Included in the ITSMR Package (no external files)   |
+||||
+|  | **Total Times Sampled** | (Monthly) Jan, 1980 $-$ Oct, 1991 (142 total obs.) |
+|  | Truncated Series | Jan, 1980 $-$ Oct, 1989 (118 obs.) |
+|  | Times to Predict | Nov, 1989 $-$ Oct, 1991 (24 obs.)  |
+```{r}
+t.past   <- 1:118    ;  wine.past   <- wine[t.past  ]  # truncated data
+t.future <- 119:142  ;  wine.future <- wine[t.future]  # desired prediction
+```
+
+
+```{r}
+par(mfrow = c(2,1), mar = c(4,4,4,1))
+dwine <- diff(wine, lag=12)
+
+acf(wine)
+acf(dwine) # fast way to remove periodic component, still looks kinda AR
+```
+
+# Some models
+```{r}
+# --- Classical Model
+M.0 <- c("trend", 1, "season", 12)
+M.3 <- c("trend", 1, "hr", c(4,12))
+M.4 <- c("log", "diff", 12)         
+
+R.0 <- Resid(wine.past, M = M.0)
+R.3 <- Resid(wine.past, M = M.3)
+R.4 <- Resid(wine.past, M = M.4)
+
+# # --- ARMA
+A.0 <- arma(x = R.0, p = 1, q = 0)
+A.3 <- arma(x = R.3, p = 1, q = 0)
+A.4 <- arma(x = R.4, p = 1, q = 0)
+
+# --- Forecast
+fc.0 <- forecast(wine.past, M = M.0, a = A.0, h = 24, opt = 0)
+fc.3 <- forecast(wine.past, M = M.3, a = A.3, h = 24, opt = 0)
+fc.4 <- forecast(wine.past, M = M.4, a = A.4, h = 24, opt = 0)
+```
+
+## Using AIC to choose an ARMA(p,q) model
+
+```{r}
+## Create empty matrix
+aic.0 <- aic.3 <- matrix(data = 0,
+                         nrow = 6, # p = 0 to 5
+                         ncol = 6) # q = 0 to 5
+
+# ---  Double loop
+for (p in 0:5) for (q in 0:5) {
+  # Create models
+
+  
+  # Get AIC values and put inside matrices
+
+}
+
+rownames(aic.0) <- rownames(aic.3) <- paste("p =",0:5)
+colnames(aic.0) <- colnames(aic.3) <- paste("q =",0:5)
+```
+
+```{r, echo = FALSE}
+kable(list(Mod.0 = aic.0, Mod.3 = aic.3),
+      caption = "AIC for ARMA(p,q) models; classical models 0, 3")
+
+which.min(aic.0)
+which.min(aic.3)
+```
+
+```{r}
+fit.past.0.aic  <- arima(R.0, order = c(1,0,1))
+fit.past.3.aic  <- arima(R.3, order = c(5,0,5))
+```
+
+Our parameter estimates and their standard errors are:
+
+```{r, echo = FALSE}
+display <- cbind(fit.past.0.aic$coef,
+                 sqrt(diag(fit.past.0.aic$var.coef)))
+kable(display,
+      col.names = c("Estimated Coefficient", "Standard Error"),
+      caption = "Model 0 - ARMA cofficients (from AIC selection)")
+```
+
+```{r, echo = FALSE}
+display <- cbind(fit.past.3.aic$coef,
+                 sqrt(diag(fit.past.3.aic$var.coef)))
+kable(display,
+      col.names = c("Estimated Coefficient", "Standard Error"),
+      caption = "Model 3 - ARMA cofficients (from AIC selection)")
+```
+
+|Parameter | Estimated Coefficient| Standard Error|
+|:---------|---------------------:|--------------:|
+|$\phi_1$  |             0.7228558|      0.7819144|
+|$\phi_2$  |             0.1736108|      0.7049307|
+|$\theta_1$|            -0.7433574|      0.7786357|
+|$\theta_2$|            -0.0168988|      0.7265034|
+|$\theta_3$|            -0.0189349|      0.1508950|
+|intercept |             7.1110241|     36.6627775|
+
+
+## Using BIC to choose an ARMA(p,q) model
+
+```{r}
+## Create empty matrix
+bic.0 <- bic.3 <- matrix(data = 0,
+                         nrow = 6, # p = 0 to 5
+                         ncol = 6) # q = 0 to 5
+
+# ---  Double loop
+for (p in 0:5) for (q in 0:5) {
+  # Create models
+ 
+  
+  # Get bic values and put inside matrices
+  
+}
+
+rownames(bic.0) <- rownames(bic.3) <- paste("p =",0:5)
+colnames(bic.0) <- colnames(bic.3) <- paste("q =",0:5)
+```
+
+```{r, echo = FALSE}
+kable(list(Mod.0 = bic.0, Mod.3 = bic.3),
+      caption = "AIC for ARMA(p,q) models; classical models 0, 3")
+
+which.min(bic.0)
+which.min(bic.3)
+```
+
+```{r}
+fit.past.0.bic <- arima(R.0, order = c(1,0,1))
+fit.past.3.bic <- arima(R.0, order = c(0,0,0))
+```
+
+Our parameter estimates and their standard errors are:
+
+```{r, echo = FALSE}
+display <- cbind(fit.past.0.bic$coef,
+                 sqrt(diag(fit.past.0.bic$var.coef)))
+kable(display,
+      col.names = c("Estimated Coefficient", "Standard Error"),
+      caption = "Model 0 - ARMA cofficients (from BIC selection)")
+```
+
+```{r, echo = FALSE}
+display <- cbind(fit.past.3.bic$coef,
+                 sqrt(diag(fit.past.3.bic$var.coef)))
+kable(display,
+      col.names = c("Estimated Coefficient", "Standard Error"),
+      caption = "Model 3 - ARMA cofficients (from BIC selection)")
+```
+
+
+
+## Residual Analysis
+
+We can check whether our fitted model is appropriate by examining the residuals.
+
+```{r, fig.height = 7}
+tsdiag(fit.past.0.aic)
+tsdiag(fit.past.3.aic)
+
+tsdiag(fit.past.0.bic)
+tsdiag(fit.past.3.bic)
+```
+
+The **bottom** plot is a diagnostic based on $p$-values. The large $p$-values tell us that the behaviour of the residuals is statistically insignificant.
+

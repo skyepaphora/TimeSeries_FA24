@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Final Project: Proposal
 
 This is worth 5\% of your grade. 
@@ -32,11 +37,11 @@ Beyond this, tell me the following:
     * Who chose the dataset?
     * Who cleaned the dataset? (it can be the same player who chose it)
     * How will you divide the work when it comes to the *writing* portion of this assignment?
-    * Are both players going to contribute to the $\LaTeX$ component of the assignment? 
+    * Are both players going to contribute to the LaTeX component of the assignment? 
     If one player does not
-    (for example, if Player 1 has no $\LaTeX$ background 
+    (for example, if Player 1 has no \LaTeX background 
     but Player 2 is a typesetting-addict ...like Skye)
-    then what will the non- $\hspace{-2pt}\LaTeX$ player contribute to make up for this? 
+    then what will the non-LaTeX player contribute to make up for this? 
     (Examples: 
     proof-reading, taking charge of coding comments, cleaning the data, citing sources, etc.)
 3.  Your assignment will be held to a slightly higher standard 

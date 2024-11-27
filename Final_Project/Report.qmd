@@ -51,6 +51,45 @@ Give it to me again! It may not match your originally proposed plan.
 Both series ($X_t,Y_t$) must be modelled according to methods from Units 1,2 and 3, if relevant.
 
 
+$$
+X_t - \phi_1 X_{t-1} = Z_t + \theta_1 Z_{t-1} + \theta_2 Z_{t-2}
+$$
+
+$$
+\sum_{i=1}^\infty
+$$
+
+
+
+$$
+\begin{aligned}
+    \begin{bmatrix}
+      1 & 2 \\ 
+      3 & 4
+    \end{bmatrix}
+    &= 
+    \begin{bmatrix}
+      1 & 2 \\ 
+      3 & 4
+    \end{bmatrix}
+    \\
+    \begin{bmatrix}
+      1 & 2 \\ 
+      3 & 4
+    \end{bmatrix}
+    &= 
+    \begin{bmatrix}
+      1 & 2 \\ 
+      3 & 4
+    \end{bmatrix}
+\end{aligned}
+$$
+
+
+
+
+
+
 
 
 

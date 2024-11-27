@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Final Report Guidelines
 
 #### Room 1: Classical Time Series Modelling
