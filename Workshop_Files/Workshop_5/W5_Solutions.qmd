@@ -1,5 +1,7 @@
 ---
-title: "Workshop 5: Analysis"
+title: |
+    | Workshop 5: 
+    | Model Selection and Residual Analysis
 subtitle: |
     |
     | STAT 464/864 | Discrete Time Series Analysis
@@ -13,7 +15,8 @@ format:
 # Setup
 \vspace*{-10pt}
 ```{r}
-library(itsmr); library(knitr)
+library(itsmr); library(knitr) # packages
+load("wine_plotter.RData")     # load plotting functions from Workshop 4
 ```
 ||||
 |:-|:------------------------|:---------------------------------------------------|
@@ -28,18 +31,32 @@ t.past   <- 1:118    ;  wine.past   <- wine[t.past  ]  # truncated data
 t.future <- 119:142  ;  wine.future <- wine[t.future]  # desired prediction
 ```
 
+#### A note on Differencing
+We didn't talk about differencing $(\nabla_d)$ as formally as we did the other 
+other methods for seasonal component estimation. But it can be really effective! 
+Look at the ``whitening" effect it has on the ACF of the original data.
 
 ```{r}
+#| fig.height = 6
 par(mfrow = c(2,1), mar = c(4,4,4,1))
 dwine <- diff(wine, lag=12)
 
 acf(wine)
-acf(dwine) # fast way to remove periodic component, still looks kinda AR
+acf(dwine)
 ```
 
-# Some models
+#### Returning to our Happy Wine Forecasting Models
+Let's look at the best models from workshop 4, plus one other model: in *Model 4*,
+we remove the trend $m_t$ by taking the *logarithm* of the original data.
+
+| Model | $m_t$ estimation | $s_t$ Estimation |
+|:------|:-----------------|:-----------------|
+| 0 | linear regression | S1 method; d = 12 |
+| 3 | linear regression | Harmonic Regression; d = \{4,12\} |
+| 4 | Take log of data | Differencing; d = 12 |
+
 ```{r}
-# --- Classical Model
+# --- Classical Model and Residuals --------- UNIT 1, FOLKS!
 M.0 <- c("trend", 1, "season", 12)
 M.3 <- c("trend", 1, "hr", c(4,12))
 M.4 <- c("log", "diff", 12)         
@@ -48,49 +65,104 @@ R.0 <- Resid(wine.past, M = M.0)
 R.3 <- Resid(wine.past, M = M.3)
 R.4 <- Resid(wine.past, M = M.4)
 
-# # --- ARMA
-A.0 <- arma(x = R.0, p = 1, q = 0)
-A.3 <- arma(x = R.3, p = 1, q = 0)
-A.4 <- arma(x = R.4, p = 1, q = 0)
+# --- ARMA ---------------------------------- UNIT 2, FOLKS!!
+A.0 <- arma(x = R.0, p = 0, q = 0) # But not yet. 
+A.3 <- arma(x = R.3, p = 0, q = 0) # Just set p = q = 0, for now.
+A.4 <- arma(x = R.4, p = 0, q = 0)
 
-# --- Forecast
+# --- Forecast ------------------------------ UNIT 3, FOLKS!!!
 fc.0 <- forecast(wine.past, M = M.0, a = A.0, h = 24, opt = 0)
 fc.3 <- forecast(wine.past, M = M.3, a = A.3, h = 24, opt = 0)
 fc.4 <- forecast(wine.past, M = M.4, a = A.4, h = 24, opt = 0)
 ```
 
-## Using AIC to choose an ARMA(p,q) model
+```{r}
+#| fig-height: 10
+par(mfrow = c(3,1), mar = c(4,4,4,1))
+
+plot.future(fc.0,
+     "Model 0 test data prediction --- Linear regression + S1 method (d=12)")
+plot.future(fc.3, 
+     "Model 3 --- Linear + Harmonic Regression (d = 4,12)")
+plot.future(fc.4, 
+     "Model 4 --- Take log + differencing (d = 12)")
+```
+
+Notice something weird happens with Model 4: the prediction interval widens over time!
+That's because we're finding a *linear* predictor for *logarithmic* data. Interesting phenomenon, but for this workshop, we'll be sticking to models 0 and 3. 
+
+# AIC Model Selection
+
+Models 0 and 3 are slightly different from how they appeared in Workshop 4: the only difference is that we didn't model any ARMA behaviour, this time. 
+
+**Question:** If we want to model the classical residuals (`R.0` and `R.3`) as an ARMA(p,q) process, *how do we choose p and q?* 
+
+**AIC** is a diagnostic criterion which compares the performances of various versions of the same model, where the versions differ by a choice of parameter (i.e. the $p$ and $q$ of an ARMA). It outputs a numerical value which has little meaning on its own, kind of like how covariance is only a *relative* measurement until it's *standardized.* 
+
+Note: we are not comparing Model 0 to Model 3. We are instead
+
+1.    comparing different ARMA(p,q) fits for Model \underline{0}, alone. 
+2.    comparing different ARMA(p,q) fits for Model \underline{3}, alone. 
+
+We will consider all ordered pairs $(p,q)$ where $p,q\in\{0,1,2,3,4,5\}$.\
+1 AIC value for each ordered pair $\longrightarrow$ output is a $6\times 6$ matrix.
+
+## Computing the AIC across ARMA parameters (p,q)
 
 ```{r}
+# --- Model Selection ----------- UNIT 4, FOLKS!
+
 ## Create empty matrix
-aic.0 <- aic.3 <- matrix(data = 0,
-                         nrow = 6, # p = 0 to 5
-                         ncol = 6) # q = 0 to 5
+aic.0 <- aic.3 <- matrix(data = 0, nrow = 6, ncol = 6) # p,q = 0 to 5
 
 # ---  Double loop
 for (p in 0:5) for (q in 0:5) {
   # Create models
-
+  R0.fit <- arima(R.0, order = c(p,0,q))
+  R3.fit <- arima(R.3, order = c(p,0,q),
+                  optim.control = list(maxit = 1000)) # add this if u get a warning 
   
   # Get AIC values and put inside matrices
-
+  aic.0[p+1,q+1] <- R0.fit$aic
+  aic.3[p+1,q+1] <- R3.fit$aic
 }
 
 rownames(aic.0) <- rownames(aic.3) <- paste("p =",0:5)
 colnames(aic.0) <- colnames(aic.3) <- paste("q =",0:5)
 ```
 
-```{r, echo = FALSE}
-kable(list(Mod.0 = aic.0, Mod.3 = aic.3),
-      caption = "AIC for ARMA(p,q) models; classical models 0, 3")
+The objects `R0.fit` and `R3.fit` are ARMA *models* with all kinds of info (just like when you create a linear *model* object with `lm()`). One of those pieces of info is indeed the AIC value. We pulled them out using the dollar sign, in our function.
 
-which.min(aic.0)
-which.min(aic.3)
+```{r, echo = FALSE}
+# --- Display the AIC matrices as professional looking tables :)
+kable(x = aic.0, caption = "AIC for ARMA(p,q) models; Classical Model 0")
+kable(x = aic.3, caption = "AIC for ARMA(p,q) models; Classical Model 3")
+
+# --- Identify and display smallest AIC value in each matrix
+print(paste("Index of Smallest AIC (Model 0):", which.min(aic.0)))
+print(paste("Index of Smallest AIC (Model 3):", which.min(aic.3)))
 ```
 
+R interprets the $i^{th}$ entry of a 2 dimensional matrix by counting down each column,
+from the left-most column to the right-most column (like the vertical version of a calendar). So the best choices of parameters for each model, according to the AIC, is
+
+| Model | p | q | AIC      | Noise variance $\sigma^2$ |
+|:------|--:|--:|---------:|----------------------:|
+| 0     | 1 | 1 | 1536.771 | `r R0.fit$sigma2`     |
+| 3     | 5 | 5 | 1583.522 | `r R3.fit$sigma2`     |
+
+The AIC values, above, are not necessarily relative, since they were calculated for distinct sets of residuals (Model 0 has different residuals than Model 3). Remember: what AIC compares is the performance of different possible *parameters,* or $(p,q)$ combinations, for a single model. 
+
+\newpage
+Regardless, I'm convinced **Model 0 will be best to work with:**
+
+1.    Its classical prediction **better captured the rugged terrain** of the data than the harmonic regression model did.
+2.    Model 0 is an ARMA(1,1), which is **simpler** than Model 3's ARMA(5,5) structure. According to the principle of parsimony (a.k.a. Occam's Razor), the simpler model is scientifically desirable. Moreover, there are less things for you to have to juggle with, and it's easier to express mathematically.
+3.    The innovations (the white noise part of the ARMA model) in Model 0 are estimated to have a **smaller variance** than those of Model 3, which is desirable.
+
+#### Estimating ARMA Coefficients
 ```{r}
 fit.past.0.aic  <- arima(R.0, order = c(1,0,1))
-fit.past.3.aic  <- arima(R.3, order = c(5,0,5))
 ```
 
 Our parameter estimates and their standard errors are:
@@ -103,89 +175,111 @@ kable(display,
       caption = "Model 0 - ARMA cofficients (from AIC selection)")
 ```
 
-```{r, echo = FALSE}
-display <- cbind(fit.past.3.aic$coef,
-                 sqrt(diag(fit.past.3.aic$var.coef)))
-kable(display,
-      col.names = c("Estimated Coefficient", "Standard Error"),
-      caption = "Model 3 - ARMA cofficients (from AIC selection)")
-```
+Notice you can recreate this table in the white (text, not r-chunk) space of your Quarto script.
+The following is the table for Model 0, copy-pasted from the console,
+except I manually put Greek letters in with LaTeX.
 
-|Parameter | Estimated Coefficient| Standard Error|
-|:---------|---------------------:|--------------:|
-|$\phi_1$  |             0.7228558|      0.7819144|
-|$\phi_2$  |             0.1736108|      0.7049307|
-|$\theta_1$|            -0.7433574|      0.7786357|
-|$\theta_2$|            -0.0168988|      0.7265034|
-|$\theta_3$|            -0.0189349|      0.1508950|
-|intercept |             7.1110241|     36.6627775|
+|          | Estimated Coefficient| Standard Error|
+|:--------:|---------------------:|--------------:|
+|$\phi_1$  |             0.9149259|      0.0736503|
+|$\theta_1$|            -0.7627690|      0.1114317|
+|intercept |            10.9078166|     39.2048776|
 
+\newpage
+# BIC Model Selection
+This diagnostic has some advantages over AIC, the details of which are beyond the scope of the course. The downside to BIC, in the specific context of *our* code, is that it's slightly computationally slower (see code comments). It's up to you whether to use AIC or BIC in your project: if their selections disagree, compare the *forecasting* performance of the selected models on the test data.
 
-## Using BIC to choose an ARMA(p,q) model
-
+## Computing the BIC across ARMA parameters (p,q)
+\vspace*{-5pt}
 ```{r}
 ## Create empty matrix
-bic.0 <- bic.3 <- matrix(data = 0,
-                         nrow = 6, # p = 0 to 5
-                         ncol = 6) # q = 0 to 5
+bic.0 <- matrix(data = 0, nrow = 6, ncol = 6) # p,q = 0 to 5
 
 # ---  Double loop
 for (p in 0:5) for (q in 0:5) {
   # Create models
- 
+  R0.fit <- arima(R.0, order=c(p,0,q))
   
   # Get bic values and put inside matrices
-  
+      # notice there is no R0.fit$bic produced by the arima() function.
+      # -> we need to use the BIC() function. That's why it's slower.
+      # R has to make an extra 36 complex calculations compared to AIC
+  bic.0[p+1,q+1] <- BIC(R0.fit)
 }
 
-rownames(bic.0) <- rownames(bic.3) <- paste("p =",0:5)
-colnames(bic.0) <- colnames(bic.3) <- paste("q =",0:5)
+rownames(bic.0) <- paste("p =",0:5)
+colnames(bic.0) <- paste("q =",0:5)
 ```
 
 ```{r, echo = FALSE}
-kable(list(Mod.0 = bic.0, Mod.3 = bic.3),
-      caption = "AIC for ARMA(p,q) models; classical models 0, 3")
+kable(x = bic.0, caption = "BIC for ARMA(p,q) models; Classical Model 0")
 
-which.min(bic.0)
-which.min(bic.3)
+print(paste("Index of Smallest BIC (Model 0):", which.min(bic.0)))
 ```
 
-```{r}
-fit.past.0.bic <- arima(R.0, order = c(1,0,1))
-fit.past.3.bic <- arima(R.0, order = c(0,0,0))
+This agrees with the result of our AIC output! 
+We can stick with the model we chose before.
+
+
+# Residual Analysis
+\vspace*{-5pt}
+We can check whether our fitted model is appropriate by examining its residuals. To do this, use the function `tsdiag()` (the input is a time series model object). So, let's do a before \& after. Here's the residual analysis of Model 0 *before* modelling $Y_t$ as ARMA(1,1):
+
+```{r, fig.height = 9}
+tsdiag(arima(R.0, order = c(0,0,0))) # no ARMA: we're setting p = q = 0.
 ```
 
-Our parameter estimates and their standard errors are:
+The standardized residuals flip-flop between prolonged positive/negative regions. They don't look random enough. The sample ACF enters the rejection region way too many times. The Ljung-Box stat tells us there are significant autocorrelations at all lags (more on this, soon). There's no way our $Y_t$ is white noise, dude.
 
-```{r, echo = FALSE}
-display <- cbind(fit.past.0.bic$coef,
-                 sqrt(diag(fit.past.0.bic$var.coef)))
-kable(display,
-      col.names = c("Estimated Coefficient", "Standard Error"),
-      caption = "Model 0 - ARMA cofficients (from BIC selection)")
+Now compare this to the residual analysis of Model 0 *after* the ARMA(1,1) modelling.\
+To clarify: we're now looking at $Z_t$ from Unit 2, not $Y_t$ from Unit 1.
+
+```{r, fig.height = 8.25}
+tsdiag(fit.past.0.aic) # this one is ARMA(1,1)
 ```
 
-```{r, echo = FALSE}
-display <- cbind(fit.past.3.bic$coef,
-                 sqrt(diag(fit.past.3.bic$var.coef)))
-kable(display,
-      col.names = c("Estimated Coefficient", "Standard Error"),
-      caption = "Model 3 - ARMA cofficients (from BIC selection)")
-```
+**Top Plot:** 
+These are the innovations $Z_t$ of Model 0, *after* the ARMA(1,1) modelling. They look nice and random: there are no trends, cycles, or major changes in variance.
+
+**Middle Plot:** 
+According to the ACF, there are no trends significant enough to suggest that the residuals are anything but white noise. (We failed to reject $H_0$).
+
+**Bottom Plot:** 
+The Ljung-Box statistic is another diagnostic which, in this context, attempts to detect significant autocorrelations. Think of it as conducting a mini white noise hypothesis test for each individual lag of the ACF. Large $p$-values tell us that the behaviour of the residuals is statistically insignificant. If they drop below the blue line, you might want to go back and tweak your model.  
+
+# Final Model
+\vspace*{-5pt}
+This doesn't have to be a fancy table or anything. Just give the equations in LaTeX.
+\vspace*{-5pt}
+
+| **Model 0**        |    |                                  |
+|:-------------------|:---|:---------------------------------|
+| Classical Model         | $X_t$ | $X_t = m_t + s_t + Y_t$     \vspace*{5pt}  |
+| ARMA-modelled Residuals | $Y_t$ | $\phi(B)Y_t = \theta(B)Z_t$ \vspace*{5pt}  |
+| Innovations (noise)     | $Z_t$ | $Z_t \sim wn(\sigma^2=21343.85)$           |
+|                         |       |                                      |
+| Trend estimate          | $m_t$ | Line of best fit (linear regression) |
+| Seasonality estimate    | $s_t$ | Periodic fn. derived from 12-point moving average (S1 Method)|
+| ARMA(p,q) selection     | AIC   |                          |
+| AR polynomial           | $\phi(z)$   | $1 - 0.9149259z$   |
+| MA polynomial           | $\theta(z)$ | $1 - 0.7627690z$   |
+
+#### Interpretation
+Our classical model suggests an upward linear trend in wine sales. 
+There is also a 12 month long repeating cycle $-$
+we can see that the sales peak each July, and drop drastically each January.
+However, this pattern's *repeating segment* is not smooth or sinusoidal:
+there is a plateau of sales in the fall months, where we would expect a more consistent decline if the data were more wave-like. This is likely due to the tight sequence of holidays: Halloween, American Thanksgiving, and then a bunch of winter holidays (including New Year's Eve.)
+
+After having removed these trends, both our AIC and BIC analyses suggested that an ARMA(1,1) model would best capture the behaviour of the residuals. Our residual analysis confirmed the effectiveness of this model, as several diagnostics showed a successful *whitening* of the classical residuals. Thus, accounting for ARMA(1,1) behaviour, we should be able to predict the noisier components of the data with greater accuracy than the classical model.
 
 
 
-## Residual Analysis
 
-We can check whether our fitted model is appropriate by examining the residuals.
 
-```{r, fig.height = 7}
-tsdiag(fit.past.0.aic)
-tsdiag(fit.past.3.aic)
 
-tsdiag(fit.past.0.bic)
-tsdiag(fit.past.3.bic)
-```
 
-The **bottom** plot is a diagnostic based on $p$-values. The large $p$-values tell us that the behaviour of the residuals is statistically insignificant.
+
+
+
 
