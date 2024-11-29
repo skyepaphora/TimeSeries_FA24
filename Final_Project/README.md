@@ -1,9 +1,10 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 # Final Report Guidelines
+
+#### Formatting!
+1.  It must be a rendered Quarto document (PDF not HTML)
+2.  Plotting Ettiquette
+3.  Math must be typed in LaTeX! 
+    That means $\alpha=0.05$, not "alpha = 0.05," and so forth.
 
 #### Room 1: Classical Time Series Modelling
 1.  Identify/model long-term trends (polynomial regression, smoothing, etc.)
@@ -13,11 +14,16 @@ output:
 #### Room 2: Linear Filters and ARMA(p,q) Processes
 1.  Discuss whether your classical model's residuals exhibit any obvious 
     AR and/or MA behaviour, according to their sample ACF.
-2.  Use diagnostics (eg AIC) to select an appropriate ARMA model.
-3.  Give the formula for this model in terms of your time series, 
-    the innovations (white noise $Z_t$), and the parameters 
-    $\{\phi_i\}_{i=1}^p$ and $\{\theta_j\}_{j=1}^q$. 
-4.  Give numerical estimates of $\{\phi_i\}_{i=1}^p$ and $\{\theta_j\}_{j=1}^q$
+2.  Use diagnostics (AIC or BIC) to select an appropriate ARMA model.
+3.  Perform a residual analysis (see Workshop 5). 
+    Are the final innovations ($Z_t$) actually white noise? 
+    Did the ARMA model successfully "whiten" your classical model's residuals?
+4.  Give the formula for the final model: 
+    Express the time series using your classical model, 
+    and express the classical model's residuals using your ARMA model. 
+    Use LaTeX to write these models in terms of the trend $m_t$, 
+    seasonal components $s_t$, the noise terms, and the parameters $\{\phi_i\}_{i=1}^p$ and $\{\theta_j\}_{j=1}^q$. \ 
+    Include numerical estimates of $\{\phi_i\}_{i=1}^p$ and $\{\theta_j\}_{j=1}^q$.
 
 #### Rooms 3 \& 4: Linear Prediction and Forecasting
 1.  Partition the data into training (past) and testing (future) intervals. 
@@ -68,7 +74,6 @@ no
 
 
 
-My model is an AMRA(1,2) model
 
 
 
