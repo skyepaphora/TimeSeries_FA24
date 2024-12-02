@@ -22,7 +22,8 @@
     Express the time series using your classical model, 
     and express the classical model's residuals using your ARMA model. 
     Use LaTeX to write these models in terms of the trend $m_t$, 
-    seasonal components $s_t$, the noise terms, and the parameters $\{\phi_i\}_{i=1}^p$ and $\{\theta_j\}_{j=1}^q$. \ 
+    seasonal components $s_t$, the noise terms,
+    and the parameters $\{\phi_i\}_{i=1}^p$ and $\{\theta_j\}_{j=1}^q$.
     Include numerical estimates of $\{\phi_i\}_{i=1}^p$ and $\{\theta_j\}_{j=1}^q$.
 
 #### Rooms 3 \& 4: Linear Prediction and Forecasting
@@ -55,7 +56,6 @@ You can use any portion of your chosen dataset, as long as the portion in questi
 2.    Plotting Ettiquette
 3.    Math must be typed using Latex!
 
-The MA(1) parameter is $\theta = 0.17$. This was found using... 
 #### Teamwork Strategy
 Give it to me again! It may not match your originally proposed plan.
 
